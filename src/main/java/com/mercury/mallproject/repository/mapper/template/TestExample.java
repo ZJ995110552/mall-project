@@ -1,4 +1,4 @@
-package com.mercury.mallproject.domain;
+package com.mercury.mallproject.repository.mapper.template;
 
 import java.util.ArrayList;
 import java.util.List;

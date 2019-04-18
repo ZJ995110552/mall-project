@@ -1,6 +1,7 @@
 package com.mercury.mallproject;
 
 import com.mercury.mallproject.common.config.DruidConfig;
+import com.mercury.mallproject.service.api.TestService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -19,6 +20,9 @@ public class MallProjectApplicationTests {
 
     @Autowired
     private DruidConfig druidConfig;
+
+    @Autowired
+    private TestService testService;
 
     @Test
     public void testLog() {
@@ -46,5 +50,13 @@ public class MallProjectApplicationTests {
     @Test
     public void contextLoads() {
     }
+
+
+    @Test
+    public void testService(){
+        long count = testService.queryToalTestObject();
+        logger.info(String.valueOf(count));
+    }
+
 
 }

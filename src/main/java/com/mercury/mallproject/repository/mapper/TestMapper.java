@@ -1,10 +1,13 @@
 package com.mercury.mallproject.repository.mapper;
 
 import com.mercury.mallproject.domain.Test;
-import com.mercury.mallproject.domain.TestExample;
+import com.mercury.mallproject.repository.mapper.template.TestExample;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+@Mapper
 public interface TestMapper {
     int countByExample(TestExample example);
 
