@@ -44,7 +44,7 @@
         </sqlMapGenerator>
         <!-- 生成DAO的包名和位置 -->
         <javaClientGenerator type="XMLMAPPER"
-                             targetPackage="com.mercury.mallproject.repository" targetProject="src/main/java">
+                             targetPackage="com.mercury.mallproject.repository.mapper" targetProject="src/main/java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
         <!-- 要生成哪些表 -->
@@ -52,11 +52,11 @@
         <!--book_info数据库表明--> <!--别名Book_Info pojo（实体类明）-->
         <table tableName="test"
                domainObjectName="Test"
-               enableCountByExample="false"
-               enableUpdateByExample="false"
-               enableDeleteByExample="false"
-               enableSelectByExample="false"
-               selectByExampleQueryId="false"></table>
+               enableCountByExample="true"
+               enableUpdateByExample="true"
+               enableDeleteByExample="true"
+               enableSelectByExample="true"
+               selectByExampleQueryId="true"></table>
 
         <!--
         <table tableName="classno" domainObjectName="ClassNo"
