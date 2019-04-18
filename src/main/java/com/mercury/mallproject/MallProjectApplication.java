@@ -12,15 +12,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @ComponentScan("com.mercury.mallproject.*")
 @MapperScan(basePackages = {"com.mercury.mallproject.repository.mapper","com.mercury.mallproject.repository.mapper.*"})
-@Controller
 @SpringBootApplication
 public class MallProjectApplication {
-
-	@ResponseBody
-	@RequestMapping("/index")
-	public String home(){
-		return "Hello World!";
-	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(MallProjectApplication.class, args);
