@@ -1,9 +1,10 @@
 package com.mercury.mallproject.repository.mapper;
 
 import com.mercury.mallproject.domain.Test;
-import com.mercury.mallproject.repository.mapper.template.TestExample;
+
 import java.util.List;
 
+import com.mercury.mallproject.domain.TestExample;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -22,4 +23,5 @@ public interface TestMapper {
     int updateByExampleSelective(@Param("record") Test record, @Param("example") TestExample example);
 
     int updateByExample(@Param("record") Test record, @Param("example") TestExample example);
+
 }

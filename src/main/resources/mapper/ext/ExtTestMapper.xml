@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mercury.mallproject.repository.mapper.ext.ExtTestMapper">
+    <resultMap id="BaseResultMap" type="com.mercury.mallproject.domain.ext.ExtTest">
+        <result column="id" property="id" jdbcType="INTEGER"/>
+        <result column="user_id" property="userId" jdbcType="VARCHAR"/>
+        <result column="user_name" property="userName" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+    id, user_id, user_name
+  </sql>
+
+    <select id="selectExistByObject" parameterType="java.util.List" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from test
+        where (id,user_id) in
+        <choose>
+            <when test="list != null">
+                <foreach collection="list" item="record" index="index" open="(" close=")"
+                         separator=",">
+                    (
+                    #{record.id,jdbcType=INTEGER},
+                    #{record.userId,jdbcType=VARCHAR},
+                    #{record.userName,jdbcType=VARCHAR}
+                    )
+                </foreach>
+            </when>
+            <otherwise>
+                ('','')
+            </otherwise>
+        </choose>
+    </select>
+
+    <insert id="batchInsert" parameterType="java.util.List">
+        insert test(
+        <include refid="Base_Column_List"/>
+        ) values
+        <foreach collection="list" item="record" index="index"
+                 separator=",">
+            (
+            #{record.id,jdbcType=INTEGER},
+            #{record.userId,jdbcType=VARCHAR},
+            #{record.userName,jdbcType=VARCHAR}
+            )
+        </foreach>
+    </insert>
+
+    <update id="batchUpdateById" parameterType="java.util.List">
+        <foreach collection="list" item="record" index="index" close="" open="" separator=";">
+            update test
+            set id = #{record.id,jdbcType=INTEGER},
+            user_id = #{record.userId,jdbcType=VARCHAR},
+            user_name = #{record.userName,jdbcType=VARCHAR}
+            where id = #{record.id}
+        </foreach>
+    </update>
+
+</mapper>
