@@ -87,9 +87,19 @@
 
 
     <!-- 日志输出级别 -->
-    <root level="DEBUG">
+    <root level="INFO">
         <appender-ref ref="STDOUT" />
         <appender-ref ref="DAYERROR" />
         <appender-ref ref="DAYINFO" />
     </root>
+
+    <!--
+    <root level="DEBUG">
+        <appender-ref ref="Console"/>
+    </root>
+
+    <root level="ERROR">
+        <appender-ref ref="Console"/>
+    </root>
+    -->
 </configuration>
