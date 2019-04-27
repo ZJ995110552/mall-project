@@ -36,7 +36,7 @@ LOCK TABLES `test` WRITE;
 
 INSERT INTO `test` (`id`, `user_id`, `user_name`)
 VALUES
-	(1,'001','zhujie'),
+	(1,'001','zj'),
 	(110,'002','fengjiangpi');
 
 /*!40000 ALTER TABLE `test` ENABLE KEYS */;
