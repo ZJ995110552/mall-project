@@ -2,6 +2,9 @@ package com.mercury.mallproject;
 
 import com.mercury.mallproject.common.config.DruidConfig;
 import com.mercury.mallproject.domain.ext.ExtTest;
+import com.mercury.mallproject.job.entity.ScheduleJobEntity;
+import com.mercury.mallproject.job.service.api.ScheduleJobService;
+import com.mercury.mallproject.job.utils.ScheduleJob;
 import com.mercury.mallproject.repository.mapper.ext.ExtTestMapper;
 import com.mercury.mallproject.service.api.TestService;
 import org.junit.Test;
@@ -31,10 +34,21 @@ public class MallProjectApplicationTests {
     @Autowired
     private ExtTestMapper extTestMapper;
 
+    @Autowired
+    private ScheduleJobService  scheduleJobService;
+
     @Test
     public void testLog() {
 
         logger.info("info");
+
+        ScheduleJobEntity scheduleJobEntity = new ScheduleJobEntity();
+        scheduleJobEntity.setBeanName(getClass().getName());
+        long ss=111;
+        scheduleJobEntity.setJobId(ss);
+        scheduleJobEntity.setMethodName("sss");
+
+        scheduleJobService.save(scheduleJobEntity);
 
         logger.error("error");
     }
