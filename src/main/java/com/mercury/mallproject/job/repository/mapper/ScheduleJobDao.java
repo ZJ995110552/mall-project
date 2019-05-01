@@ -8,7 +8,6 @@ import java.util.Map;
 /**
  * 定时任务
  */
-@Mapper
 public interface ScheduleJobDao extends BaseDao<ScheduleJobEntity> {
 
     /**

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @ComponentScan("com.mercury.mallproject.*")
-@MapperScan(basePackages = {"com.mercury.mallproject.repository.mapper","com.mercury.mallproject.repository.mapper.*"})
+@MapperScan(basePackages = {"com.mercury.mallproject.repository.mapper","com.mercury.mallproject.repository.mapper.*","com.mercury.mallproject.job.repository.mapper"})
 @SpringBootApplication
 public class MallProjectApplication {
 

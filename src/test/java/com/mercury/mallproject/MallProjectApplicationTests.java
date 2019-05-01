@@ -46,6 +46,7 @@ public class MallProjectApplicationTests {
         scheduleJobEntity.setBeanName(getClass().getName());
         long ss=111;
         scheduleJobEntity.setJobId(ss);
+        scheduleJobEntity.setCronExpression("* * * * * ?");
         scheduleJobEntity.setMethodName("sss");
 
         scheduleJobService.save(scheduleJobEntity);
@@ -56,7 +57,7 @@ public class MallProjectApplicationTests {
     @Test
     public void testDruid() {
         try (
-                Connection connection = druidConfig.druidDataSource().getConnection()
+                Connection connection = druidConfig.druidDataSource().getConnection();
 
         ) {
         } catch (Exception e) {
@@ -99,6 +100,13 @@ public class MallProjectApplicationTests {
 
         testService.batchInsert(extTestList);
     }
+
+    @Test
+    public void testRun(){
+        logger.info("Springboot Test run ");
+
+    }
+
 
 
 
