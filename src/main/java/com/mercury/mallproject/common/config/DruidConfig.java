@@ -13,6 +13,8 @@ import org.springframework.context.annotation.Configuration;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 @Configuration
 public class DruidConfig {
@@ -70,9 +72,18 @@ public class DruidConfig {
     public ServletRegistrationBean druidServlet() {
         ServletRegistrationBean servlet = new ServletRegistrationBean(new StatViewServlet(),"/druid/*");
         servlet.setName("druidStatViewServlet");
-        servlet.addInitParameter("resetEnable", "false");
+
+        Map<String, String> initParameters = new HashMap<>();
+        initParameters.put("resetEnable", "false"); //禁用HTML页面上的“Rest All”功能
+//        initParameters.put("allow", "10.8.9.115");  //ip白名单（没有配置或者为空，则允许所有访问）
+        initParameters.put("loginUsername", "admin");  //++监控页面登录用户名
+        initParameters.put("loginPassword", "admin123");  //++监控页面登录用户密码
+        initParameters.put("deny", ""); //ip黑名单
+        servlet.setInitParameters(initParameters);
         return servlet;
     }
+
+
 
     @Bean
     public FilterRegistrationBean filterRegistrationBean() {
