@@ -7,7 +7,7 @@
     </Appenders>
     <Loggers>
         <Logger name="com.mercury.mallproject" level="INFO"/>
-        <Root level="error">
+        <Root level="info">
             <AppenderRef ref="Console"/>
         </Root>
     </Loggers>
