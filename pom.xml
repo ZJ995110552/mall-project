@@ -93,7 +93,6 @@
             <version>2.3.0</version>
         </dependency>
 
-
         <!-- gson -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -107,8 +106,6 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.8.1</version>
         </dependency>
-
-
     </dependencies>
 
     <build>
