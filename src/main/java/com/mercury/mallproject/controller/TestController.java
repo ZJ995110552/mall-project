@@ -4,6 +4,7 @@ import com.mercury.mallproject.domain.Test;
 import com.mercury.mallproject.service.api.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -30,7 +31,14 @@ public class TestController {
     @ResponseBody
     @RequestMapping(value = "test" ,method = RequestMethod.GET)
     public String test(){
-        return "hhhhhh";
+        return "test";
+    }
+
+    @RequestMapping(value = "testftl" ,method = RequestMethod.GET)
+    public String testftl(Model model){
+        String testString = "This is test";
+        model.addAttribute("test",testString);
+        return "test";
     }
 
 

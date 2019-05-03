@@ -19,7 +19,7 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class MallProjectApplicationTests {
+public class AppTest {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
