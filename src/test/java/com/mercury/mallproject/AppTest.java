@@ -58,11 +58,11 @@ public class AppTest {
 
     @Test
     public void testRedis(){
-//        redisTemplate.opsForValue().set("zhujiekk","zhujievv");
+//        redisTemplate.opsForValue().set("testkey","testvalue");
 //
-//        redisTemplate.delete("zhujiekk");
+//        redisTemplate.delete("testkey");
 //
-//        logger.info(redisTemplate.opsForValue().get("zhujiekk").toString());
+//        logger.info(redisTemplate.opsForValue().get("testkey").toString());
 
     }
 
