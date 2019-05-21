@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.sql.Connection;
@@ -35,6 +36,9 @@ public class AppTest {
     @Autowired
     private ScheduleJobService  scheduleJobService;
 
+    @Autowired
+    private RedisTemplate redisTemplate;
+
     @Test
     public void testLog() {
 
@@ -51,6 +55,17 @@ public class AppTest {
 
         logger.error("error");
     }
+
+    @Test
+    public void testRedis(){
+//        redisTemplate.opsForValue().set("zhujiekk","zhujievv");
+//
+//        redisTemplate.delete("zhujiekk");
+//
+//        logger.info(redisTemplate.opsForValue().get("zhujiekk").toString());
+
+    }
+
 
     @Test
     public void testDruid() {
