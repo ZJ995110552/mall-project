@@ -11,7 +11,7 @@
  Target Server Version : 50643
  File Encoding         : 65001
 
- Date: 22/05/2019 21:31:38
+ Date: 22/05/2019 22:08:20
 */
 
 SET NAMES utf8mb4;
@@ -22,7 +22,8 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_user`;
 CREATE TABLE `sys_user` (
-  `id` bigint(20) NOT NULL COMMENT 'id',
+  `id` bigint(40) NOT NULL COMMENT 'id',
+  `user_id` varchar(50) NOT NULL COMMENT '用户编号',
   `username` varchar(50) NOT NULL COMMENT '用户名',
   `password` varchar(100) DEFAULT NULL COMMENT '密码',
   `real_name` varchar(50) DEFAULT NULL COMMENT '姓名',

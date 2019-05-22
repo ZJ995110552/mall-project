@@ -5,6 +5,8 @@ import java.util.Date;
 public class SysUser {
     private Long id;
 
+    private String userId;
+
     private String username;
 
     private String password;
@@ -41,6 +43,14 @@ public class SysUser {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId == null ? null : userId.trim();
     }
 
     public String getUsername() {
