@@ -1,5 +1,6 @@
 package com.mercury.mallproject.service.impl;
 
+import com.google.common.collect.Iterables;
 import com.mercury.mallproject.domain.SysUser;
 import com.mercury.mallproject.domain.SysUserExample;
 import com.mercury.mallproject.repository.mapper.SysUserMapper;
@@ -22,18 +23,16 @@ public class SysUserServiceImpl implements SysUserService {
         SysUserExample.Criteria criteria = sysUserExample.createCriteria();
 
         criteria.andUsernameEqualTo(username);
-        return null;
-
+        return Iterables.getFirst(sysUserMapper.selectByExample(sysUserExample),null);
     }
 
     @Override
     public SysUser queryObject(String userId) {
         SysUserExample sysUserExample = new SysUserExample();
         SysUserExample.Criteria criteria = sysUserExample.createCriteria();
+        criteria.andUserIdEqualTo(userId);
 
-        criteria.andUsernameEqualTo(userId);
-
-        return null;
+        return Iterables.getFirst(sysUserMapper.selectByExample(sysUserExample),null);
     }
 
     @Override
@@ -50,7 +49,6 @@ public class SysUserServiceImpl implements SysUserService {
         criteria.andUserIdEqualTo(user.getUserId());
 
         sysUserMapper.updateByExample(user,sysUserExample);
-
     }
 
     @Override
@@ -61,6 +59,5 @@ public class SysUserServiceImpl implements SysUserService {
         criteria.andUserIdIn(userIds);
 
         sysUserMapper.deleteByExample(sysUserExample);
-
     }
 }
