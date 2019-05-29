@@ -5,12 +5,14 @@ import com.mercury.mallproject.common.exception.ResultCode;
 import com.mercury.mallproject.common.utils.Result;
 import com.mercury.mallproject.domain.SysUser;
 import com.mercury.mallproject.service.api.SysUserService;
-import org.apache.ibatis.annotations.Param;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,15 +38,12 @@ public class SysLoginController {
         SysUser sysUser = sysUserService.queryByUserName(username);
         if(sysUser == null){
             return Result.error(ResultCode.USER_NOT_FOUNT.getDescription());
-        }else if(!sysUser.getPassword().equals(password)){
+        }else if(!sysUser.getPassword().equals(DigestUtils.sha256Hex(password))){
             return Result.error(ResultCode.PASSWORD_ERROR.getDescription());
         }else{
             map.put("token", "");
             map.put("expire", "");
         }
-
-
-
 
         return Result.ok(map);
 
