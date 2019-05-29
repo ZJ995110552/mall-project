@@ -1,6 +1,8 @@
 package com.mercury.mallproject;
 
 import com.mercury.mallproject.common.config.DruidConfig;
+import com.mercury.mallproject.common.id.DefaultIdGenerator;
+import com.mercury.mallproject.common.id.IdGenerator;
 import com.mercury.mallproject.domain.ext.ExtTest;
 import com.mercury.mallproject.job.service.api.ScheduleJobService;
 import com.mercury.mallproject.repository.mapper.ext.ExtTestMapper;
@@ -24,6 +26,9 @@ public class AppTest {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
+    private IdGenerator idGenerator = DefaultIdGenerator.getInstance();
+
+
     @Autowired
     private DruidConfig druidConfig;
 
@@ -38,6 +43,13 @@ public class AppTest {
 
     @Autowired
     private RedisTemplate redisTemplate;
+
+    @Test
+    public void testIdGenerator(){
+        logger.info(idGenerator.generateId().toString());
+        logger.info(idGenerator.generateId().toString());
+        logger.info(idGenerator.generateId().toString());
+    }
 
     @Test
     public void testLog() {
@@ -92,26 +104,23 @@ public class AppTest {
     @Test
     public void testBatch(){
 
-
-
-
-        List<ExtTest> extTestList = new ArrayList<ExtTest>();
-
-        ExtTest extTest = new ExtTest();
-        extTest.setId(3);
-        extTest.setUserId("wangyangdahai");
-        extTest.setUserName("wangyangdahai");
-
-        extTestList.add(extTest);
-
-        ExtTest extTest4 = new ExtTest();
-        extTest4.setId(4);
-        extTest4.setUserId("wangyangdahai4");
-        extTest4.setUserName("wangyangdahai4");
-        extTestList.add(extTest4);
-
-
-        testService.batchInsert(extTestList);
+//        List<ExtTest> extTestList = new ArrayList<ExtTest>();
+//
+//        ExtTest extTest = new ExtTest();
+//        extTest.setId(3);
+//        extTest.setUserId("wangyangdahai");
+//        extTest.setUserName("wangyangdahai");
+//
+//        extTestList.add(extTest);
+//
+//        ExtTest extTest4 = new ExtTest();
+//        extTest4.setId(4);
+//        extTest4.setUserId("wangyangdahai4");
+//        extTest4.setUserName("wangyangdahai4");
+//        extTestList.add(extTest4);
+//
+//
+//        testService.batchInsert(extTestList);
     }
 
     @Test
