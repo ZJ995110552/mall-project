@@ -1,6 +1,10 @@
 package com.mercury.mallproject;
 
+import com.mercury.mallproject.common.id.DefaultIdGenerator;
+import com.mercury.mallproject.common.id.IdGenerator;
+import com.mercury.mallproject.domain.SysLogOperation;
 import com.mercury.mallproject.domain.SysUser;
+import com.mercury.mallproject.repository.mapper.SysLogOperationMapper;
 import com.mercury.mallproject.service.api.SysUserService;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.Test;
@@ -17,8 +21,13 @@ public class ApiTest {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
+    private IdGenerator idGenerator = DefaultIdGenerator.getInstance();
+
     @Autowired
     private SysUserService sysUserService;
+
+    @Autowired
+    private SysLogOperationMapper sysLogOperationMapper;
 
 
     @Test
@@ -51,4 +60,14 @@ public class ApiTest {
     public void testUtils(){
         logger.info("zj:"+DigestUtils.sha256Hex("zj"));
     }
+
+    @Test
+    public void testLogOp(){
+        SysLogOperation sysLogOperation = new SysLogOperation();
+        sysLogOperation.setId(idGenerator.generateId());
+        sysLogOperation.setRequestTime(11111);
+        sysLogOperation.setStatus(new Byte("1"));
+        sysLogOperationMapper.insert(sysLogOperation);
+    }
+
 }
