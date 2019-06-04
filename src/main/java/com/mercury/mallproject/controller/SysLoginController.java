@@ -1,7 +1,10 @@
 package com.mercury.mallproject.controller;
 
 
+import com.google.code.kaptcha.Constants;
+import com.google.code.kaptcha.Producer;
 import com.mercury.mallproject.common.exception.ResultCode;
+import com.mercury.mallproject.common.utils.CodeUtil;
 import com.mercury.mallproject.common.utils.Result;
 import com.mercury.mallproject.domain.SysUser;
 import com.mercury.mallproject.service.api.SysUserService;
@@ -13,26 +16,56 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.imageio.ImageIO;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/sys")
 public class SysLoginController {
 
     @Autowired
     private SysUserService sysUserService;
 
+    @Autowired
+    private Producer captchaProducer = null;
+    @RequestMapping("/images/captcha.png")
+    public void getKaptchaImage(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        HttpSession session = request.getSession();
+        response.setDateHeader("Expires", 0);
+        response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
+        response.addHeader("Cache-Control", "post-check=0, pre-check=0");
+        response.setHeader("Pragma", "no-cache");
+        response.setContentType("image/jpeg");
+        //生成验证码
+        String capText = captchaProducer.createText();
+        session.setAttribute(Constants.KAPTCHA_SESSION_KEY, capText);
+        //向客户端写出
+        BufferedImage bi = captchaProducer.createImage(capText);
+        ServletOutputStream out = response.getOutputStream();
+        ImageIO.write(bi, "jpg", out);
+        try {
+            out.flush();
+        } finally {
+            out.close();
+        }
+    }
+
     @ResponseBody
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public Result<Map<String, Object>> login(@RequestParam("username") String username, @RequestParam("password") String password, String captcha) {
-//        if(username.equals("admin") && inputPassword.equals("admin")){
-//            return "SUCCES";
-//        }else{
-//            return "FAILE";
-//        }
+    @RequestMapping(value = "/sys/login", method = RequestMethod.POST)
+    public Result<Map<String, Object>> login(@RequestParam("username") String username, @RequestParam("password") String password, HttpServletRequest request) {
+
 
         Map<String, Object> map = new HashMap<>();
+
+
+        if (!CodeUtil.checkVerifyCode(request)) {
+            return Result.error(ResultCode.CAPTCHA_ERROR.getDescription());
+        }
 
 
         SysUser sysUser = sysUserService.queryByUserName(username);
