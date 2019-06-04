@@ -50,8 +50,8 @@
         <!-- 要生成哪些表 -->
         <!-- tableName:用于自动生成代码的数据库表；domainObjectName:对应于数据库表的javaBean类名 -->
         <!--book_info数据库表明--> <!--别名Book_Info pojo（实体类明）-->
-        <table tableName="sys_user"
-               domainObjectName="SysUser"
+        <table tableName="sys_log_operation"
+               domainObjectName="SysLogOperation"
                enableCountByExample="true"
                enableUpdateByExample="true"
                enableDeleteByExample="true"
