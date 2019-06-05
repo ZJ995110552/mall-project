@@ -11,7 +11,7 @@
  Target Server Version : 50643
  File Encoding         : 65001
 
- Date: 04/06/2019 22:02:22
+ Date: 05/06/2019 21:00:17
 */
 
 SET NAMES utf8mb4;
@@ -22,7 +22,7 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_log_operation`;
 CREATE TABLE `sys_log_operation` (
-  `id` bigint(20) NOT NULL COMMENT 'id',
+  `id` bigint(40) NOT NULL COMMENT 'id',
   `operation` varchar(50) DEFAULT NULL COMMENT '用户操作',
   `request_uri` varchar(200) DEFAULT NULL COMMENT '请求URI',
   `request_method` varchar(20) DEFAULT NULL COMMENT '请求方式',
@@ -30,7 +30,7 @@ CREATE TABLE `sys_log_operation` (
   `request_time` int(10) unsigned NOT NULL COMMENT '请求时长(毫秒)',
   `user_agent` varchar(500) DEFAULT NULL COMMENT '用户代理',
   `ip` varchar(32) DEFAULT NULL COMMENT '操作IP',
-  `status` tinyint(3) unsigned NOT NULL COMMENT '状态  0：失败   1：成功',
+  `status` int(3) unsigned NOT NULL COMMENT '状态  0：失败   1：成功',
   `creator_name` varchar(50) DEFAULT NULL COMMENT '用户名',
   `creator` bigint(20) DEFAULT NULL COMMENT '创建者',
   `create_date` datetime DEFAULT NULL COMMENT '创建时间',

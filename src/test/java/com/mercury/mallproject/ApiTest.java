@@ -66,7 +66,7 @@ public class ApiTest {
         SysLogOperation sysLogOperation = new SysLogOperation();
         sysLogOperation.setId(idGenerator.generateId());
         sysLogOperation.setRequestTime(11111);
-        sysLogOperation.setStatus(new Byte("1"));
+        sysLogOperation.setStatus(1);
         sysLogOperationMapper.insert(sysLogOperation);
     }
 
