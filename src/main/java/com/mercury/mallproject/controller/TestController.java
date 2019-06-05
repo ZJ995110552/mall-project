@@ -1,5 +1,6 @@
 package com.mercury.mallproject.controller;
 
+import com.mercury.mallproject.common.annotation.OperationLogger;
 import com.mercury.mallproject.domain.Test;
 import com.mercury.mallproject.service.api.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +17,11 @@ public class TestController {
     @Autowired
     private TestService testService;
 
+    @OperationLogger(modelName = "temp",user = "admin",option = "test")
     @RequestMapping(value = "/testMethod",method = RequestMethod.GET)
     public String testMethod(){
         Test test = new Test();
-        test.setId(110);
+        test.setId(1101);
         test.setUserId("002");
         test.setUserName("fengjiangpi");
 
