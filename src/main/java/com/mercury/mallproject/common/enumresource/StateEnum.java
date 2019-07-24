@@ -1,7 +1,5 @@
 package com.mercury.mallproject.common.enumresource;
 
-import com.mercury.mallproject.common.utils.EnumMessage;
-
 public enum StateEnum implements EnumMessage {
     ENABLE("1", "正常"),
     LIMIT("0", "禁用");

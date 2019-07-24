@@ -1,4 +1,4 @@
-package com.mercury.mallproject.common.utils;
+package com.mercury.mallproject.common.enumresource;
 
 public interface EnumMessage {
 

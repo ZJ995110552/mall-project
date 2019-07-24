@@ -1,7 +1,5 @@
 package com.mercury.mallproject.common.enumresource;
 
-import com.mercury.mallproject.common.utils.EnumMessage;
-
 public enum IsInitEnum implements EnumMessage {
 
     YES("1", "是"),

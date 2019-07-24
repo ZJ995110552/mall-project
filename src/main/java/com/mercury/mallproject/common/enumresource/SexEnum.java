@@ -1,7 +1,5 @@
 package com.mercury.mallproject.common.enumresource;
 
-import com.mercury.mallproject.common.utils.EnumMessage;
-
 public enum SexEnum implements EnumMessage {
     MEN("1", "男"),
     WOMEN("2", "女"),
