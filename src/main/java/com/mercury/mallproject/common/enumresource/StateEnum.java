@@ -1,14 +1,17 @@
 package com.mercury.mallproject.common.enumresource;
 
-public enum StateEnum implements EnumMessage {
+
+public enum StateEnum implements EnumCode<String>
+
+{
     ENABLE("1", "正常"),
     LIMIT("0", "禁用");
     private final String code;
-    private final String value;
+    private final String description;
 
     private StateEnum(String code, String value) {
         this.code = code;
-        this.value = value;
+        this.description = value;
     }
 
     @Override
@@ -17,7 +20,8 @@ public enum StateEnum implements EnumMessage {
     }
 
     @Override
-    public String getValue() {
-        return value;
+    public String getDescription() {
+        return description;
     }
+
 }

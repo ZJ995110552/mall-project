@@ -1,9 +1,9 @@
 package com.mercury.mallproject.common.enumresource;
 
-public enum OperationStatusEnum implements EnumCode<Integer>{
+public enum OperationStatusEnum implements EnumCode<Integer> {
 
-    FAIL(0,"失败"),SUCCESS(1,"成功");
-    
+    FAIL(0, "失败"), SUCCESS(1, "成功");
+
 
     private Integer code;
     private String description;

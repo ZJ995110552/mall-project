@@ -1,6 +1,7 @@
 package com.mercury.mallproject.common.enumresource;
 
-public enum IsInitEnum implements EnumMessage {
+
+public enum IsInitEnum implements EnumCode<String> {
 
     YES("1", "是"),
     NO("0", "否");
@@ -19,7 +20,9 @@ public enum IsInitEnum implements EnumMessage {
     }
 
     @Override
-    public String getValue() {
+    public String getDescription() {
         return value;
     }
+
+
 }

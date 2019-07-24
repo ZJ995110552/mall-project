@@ -1,15 +1,16 @@
 package com.mercury.mallproject.common.enumresource;
 
-public enum SexEnum implements EnumMessage {
+public enum SexEnum implements EnumCode<String> {
+
     MEN("1", "男"),
     WOMEN("2", "女"),
     UNKNOWN("0", "保密");
     private final String code;
-    private final String value;
+    private final String description;
 
-    private SexEnum(String code, String value) {
+    private SexEnum(String code, String description) {
         this.code = code;
-        this.value = value;
+        this.description = description;
     }
 
     @Override
@@ -18,7 +19,9 @@ public enum SexEnum implements EnumMessage {
     }
 
     @Override
-    public String getValue() {
-        return value;
+    public String getDescription() {
+        return description;
     }
+
+
 }
