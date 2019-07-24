@@ -494,9 +494,11 @@ a cite {
 .layui-btn-sys {
     background-color: #2991d9
 }
+
 .layui-btn-green {
     border-color: green;
 }
+
 .layui-btn-warm {
     background-color: #F7B824
 }
@@ -606,11 +608,13 @@ a cite {
 }
 
 .layui-input:hover, .layui-textarea:hover {
-    border-color: rgb(94, 152, 217); !important
+    border-color: rgb(94, 152, 217);
+!important
 }
 
 .layui-input:focus, .layui-textarea:focus {
-    border-color: rgb(94, 152, 217); !important
+    border-color: rgb(94, 152, 217);
+!important
 }
 
 .layui-textarea {
@@ -678,7 +682,7 @@ a cite {
     margin-right: 10px
 }
 
-.layui-input-block, .layui-input-inline,.layui-input-normal{
+.layui-input-block, .layui-input-inline, .layui-input-normal {
     position: relative
 }
 
@@ -758,6 +762,7 @@ a cite {
     box-shadow: 0 2px 4px rgba(0, 0, 0, .12);
     box-sizing: border-box
 }
+
 .layui-form-select dl dd, .layui-form-select dl dt {
     padding: 0 10px;
     line-height: 36px;
@@ -1488,9 +1493,10 @@ a cite {
     font-size: 12px
 }
 
-.layui-tree-skin-blue .layui-icon{
+.layui-tree-skin-blue .layui-icon {
     color: #2991d9;
 }
+
 .layui-tree {
     line-height: 26px
 }
@@ -2249,7 +2255,8 @@ body .layui-util-face .layui-layer-content {
         margin-bottom: 5px
     }
 }
-code{
+
+code {
     padding: 4px 4px;
     font-size: 90%;
     color: #c7254e;

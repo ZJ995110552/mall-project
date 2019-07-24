@@ -23,7 +23,7 @@ public class SysUserServiceImpl implements SysUserService {
         SysUserExample.Criteria criteria = sysUserExample.createCriteria();
 
         criteria.andUsernameEqualTo(username);
-        return Iterables.getFirst(sysUserMapper.selectByExample(sysUserExample),null);
+        return Iterables.getFirst(sysUserMapper.selectByExample(sysUserExample), null);
     }
 
     @Override
@@ -32,7 +32,7 @@ public class SysUserServiceImpl implements SysUserService {
         SysUserExample.Criteria criteria = sysUserExample.createCriteria();
         criteria.andUserIdEqualTo(userId);
 
-        return Iterables.getFirst(sysUserMapper.selectByExample(sysUserExample),null);
+        return Iterables.getFirst(sysUserMapper.selectByExample(sysUserExample), null);
     }
 
     @Override
@@ -48,7 +48,7 @@ public class SysUserServiceImpl implements SysUserService {
 
         criteria.andUserIdEqualTo(user.getUserId());
 
-        sysUserMapper.updateByExample(user,sysUserExample);
+        sysUserMapper.updateByExample(user, sysUserExample);
     }
 
     @Override

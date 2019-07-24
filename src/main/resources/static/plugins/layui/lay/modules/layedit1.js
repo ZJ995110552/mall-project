@@ -30,10 +30,10 @@
         return l.ie && l.ie < 8 ? c.removeClass("layui-hide").addClass(o) : (d[0] && d.remove(), s.call(a, m, c[0], y), c.addClass("layui-hide").after(m), a.index)
     }, c.prototype.getContent = function (t) {
         var e = u(t);
-        if (e[0])return d(e[0].document.body.innerHTML)
+        if (e[0]) return d(e[0].document.body.innerHTML)
     }, c.prototype.getText = function (t) {
         var i = u(t);
-        if (i[0])return e(i[0].document.body).text()
+        if (i[0]) return e(i[0].document.body).text()
     }, c.prototype.setContent = function (t, i, a) {
         var l = u(t);
         l[0] && (a ? e(l[0].document.body).append(i) : e(l[0].document.body).html(i), layedit.sync(t))
@@ -72,7 +72,7 @@
             if (13 === e) {
                 var a = m(r), l = p(a), n = l.parentNode;
                 if ("pre" === n.tagName.toLowerCase()) {
-                    if (t.shiftKey)return;
+                    if (t.shiftKey) return;
                     return i.msg("请暂时用shift+enter"), !1
                 }
                 r.execCommand("formatBlock", !1, "<p>")
@@ -100,14 +100,14 @@
         return t.endContainer || t.parentElement().childNodes[0]
     }, v = function (t, i, a) {
         var l = this.document, n = document.createElement(t);
-        for (var o in i)n.setAttribute(o, i[o]);
+        for (var o in i) n.setAttribute(o, i[o]);
         if (n.removeAttribute("text"), l.selection) {
             var r = a.text || i.text;
-            if ("a" === t && !r)return;
+            if ("a" === t && !r) return;
             r && (n.innerHTML = r), a.pasteHTML(e(n).prop("outerHTML")), a.select()
         } else {
             var r = a.toString() || i.text;
-            if ("a" === t && !r)return;
+            if ("a" === t && !r) return;
             r && (n.innerHTML = r), a.deleteContents(), a.insertNode(n)
         }
     }, h = function (t, i) {
@@ -211,8 +211,8 @@
             }), e
         }();
         return x.hide = x.hide || function (t) {
-                "face" !== e(t.target).attr("layedit-event") && i.close(x.index)
-            }, x.index = i.tips(function () {
+            "face" !== e(t.target).attr("layedit-event") && i.close(x.index)
+        }, x.index = i.tips(function () {
             var t = [];
             return layui.each(a, function (e, i) {
                 t.push('<li title="' + e + '"><img src="' + i + '" alt="' + e + '"></li>')

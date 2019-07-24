@@ -2,7 +2,9 @@ package com.mercury.mallproject.repository.mapper;
 
 import com.mercury.mallproject.domain.SysLogOperation;
 import com.mercury.mallproject.domain.SysLogOperationExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface SysLogOperationMapper {

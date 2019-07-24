@@ -17,9 +17,9 @@ public class TestController {
     @Autowired
     private TestService testService;
 
-    @OperationLogger(modelName = "temp",user = "admin",option = "test")
-    @RequestMapping(value = "/testMethod",method = RequestMethod.GET)
-    public String testMethod(){
+    @OperationLogger(modelName = "temp", user = "admin", option = "test")
+    @RequestMapping(value = "/testMethod", method = RequestMethod.GET)
+    public String testMethod() {
         Test test = new Test();
         test.setId(1101);
         test.setUserId("002");
@@ -27,22 +27,21 @@ public class TestController {
 
         int intValue = testService.addObject(test);
 
-        return intValue+"";
+        return intValue + "";
     }
 
     @ResponseBody
-    @RequestMapping(value = "test" ,method = RequestMethod.GET)
-    public String test(){
+    @RequestMapping(value = "test", method = RequestMethod.GET)
+    public String test() {
         return "test";
     }
 
-    @RequestMapping(value = "testftl" ,method = RequestMethod.GET)
-    public String testftl(Model model){
+    @RequestMapping(value = "testftl", method = RequestMethod.GET)
+    public String testftl(Model model) {
         String testString = "This is test";
-        model.addAttribute("test",testString);
+        model.addAttribute("test", testString);
         return "test";
     }
-
 
 
 }

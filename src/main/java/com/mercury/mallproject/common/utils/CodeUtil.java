@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 public class CodeUtil {
     /**
      * 将获取到的前端参数转为string类型
+     *
      * @param request
      * @param key
      * @return
@@ -12,19 +13,21 @@ public class CodeUtil {
     public static String getString(HttpServletRequest request, String key) {
         try {
             String result = request.getParameter(key);
-            if(result != null) {
+            if (result != null) {
                 result = result.trim();
             }
-            if("".equals(result)) {
+            if ("".equals(result)) {
                 result = null;
             }
             return result;
-        }catch(Exception e) {
+        } catch (Exception e) {
             return null;
         }
     }
+
     /**
      * 验证码校验
+     *
      * @param request
      * @return
      */
@@ -33,7 +36,7 @@ public class CodeUtil {
         String verifyCodeExpected = (String) request.getSession().getAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
         //获取用户输入的验证码
         String verifyCodeActual = CodeUtil.getString(request, "captcha");
-        if(verifyCodeActual == null ||!verifyCodeActual.equalsIgnoreCase(verifyCodeExpected)) {
+        if (verifyCodeActual == null || !verifyCodeActual.equalsIgnoreCase(verifyCodeExpected)) {
             return false;
         }
         return true;

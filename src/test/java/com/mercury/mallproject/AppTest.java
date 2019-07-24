@@ -39,13 +39,13 @@ public class AppTest {
     private ExtTestMapper extTestMapper;
 
     @Autowired
-    private ScheduleJobService  scheduleJobService;
+    private ScheduleJobService scheduleJobService;
 
     @Autowired
     private RedisTemplate redisTemplate;
 
     @Test
-    public void testIdGenerator(){
+    public void testIdGenerator() {
         logger.info(idGenerator.generateId().toString());
         logger.info(idGenerator.generateId().toString());
         logger.info(idGenerator.generateId().toString());
@@ -69,7 +69,7 @@ public class AppTest {
     }
 
     @Test
-    public void testRedis(){
+    public void testRedis() {
 //        redisTemplate.opsForValue().set("testkey","testvalue");
 //
 //        redisTemplate.delete("testkey");
@@ -102,7 +102,7 @@ public class AppTest {
     }
 
     @Test
-    public void testBatch(){
+    public void testBatch() {
 
 //        List<ExtTest> extTestList = new ArrayList<ExtTest>();
 //
@@ -124,13 +124,10 @@ public class AppTest {
     }
 
     @Test
-    public void testRun(){
+    public void testRun() {
         logger.info("Springboot Test run ");
 
     }
-
-
-
 
 
 }

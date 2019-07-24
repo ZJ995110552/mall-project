@@ -70,7 +70,7 @@ public class DruidConfig {
 
     @Bean
     public ServletRegistrationBean druidServlet() {
-        ServletRegistrationBean servlet = new ServletRegistrationBean(new StatViewServlet(),"/druid/*");
+        ServletRegistrationBean servlet = new ServletRegistrationBean(new StatViewServlet(), "/druid/*");
         servlet.setName("druidStatViewServlet");
 
         Map<String, String> initParameters = new HashMap<>();
@@ -82,7 +82,6 @@ public class DruidConfig {
         servlet.setInitParameters(initParameters);
         return servlet;
     }
-
 
 
     @Bean

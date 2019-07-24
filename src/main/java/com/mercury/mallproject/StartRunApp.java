@@ -7,12 +7,12 @@ import org.springframework.context.annotation.ComponentScan;
 
 
 @ComponentScan("com.mercury.mallproject.*")
-@MapperScan(basePackages = {"com.mercury.mallproject.repository.mapper","com.mercury.mallproject.repository.mapper.*","com.mercury.mallproject.job.repository.mapper"})
+@MapperScan(basePackages = {"com.mercury.mallproject.repository.mapper", "com.mercury.mallproject.repository.mapper.*", "com.mercury.mallproject.job.repository.mapper"})
 @SpringBootApplication
 public class StartRunApp {
 
-	public static void main(String[] args) {
-		SpringApplication.run(StartRunApp.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(StartRunApp.class, args);
+    }
 
 }

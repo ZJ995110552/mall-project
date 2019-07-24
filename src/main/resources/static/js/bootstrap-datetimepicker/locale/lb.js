@@ -3,10 +3,11 @@
 //! author : mweimerskirch : https://github.com/mweimerskirch, David Raison : https://github.com/kwisatz
 
 (function (global, factory) {
-   typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('../moment')) :
-   typeof define === 'function' && define.amd ? define(['moment'], factory) :
-   factory(global.moment)
-}(this, function (moment) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('../moment')) :
+        typeof define === 'function' && define.amd ? define(['moment'], factory) :
+            factory(global.moment)
+}(this, function (moment) {
+    'use strict';
 
 
     function processRelativeTime(number, withoutSuffix, key, isFuture) {
@@ -19,6 +20,7 @@
         };
         return withoutSuffix ? format[key][0] : format[key][1];
     }
+
     function processFutureTime(string) {
         var number = string.substr(0, string.indexOf(' '));
         if (eifelerRegelAppliesToNumber(number)) {
@@ -26,6 +28,7 @@
         }
         return 'an ' + string;
     }
+
     function processPastTime(string) {
         var number = string.substr(0, string.indexOf(' '));
         if (eifelerRegelAppliesToNumber(number)) {
@@ -33,6 +36,7 @@
         }
         return 'virun ' + string;
     }
+
     /**
      * Returns true if the word before the given number loses the '-n' ending.
      * e.g. 'an 10 Deeg' but 'a 5 Deeg'
@@ -105,20 +109,20 @@
                 }
             }
         },
-        relativeTime : {
-            future : processFutureTime,
-            past : processPastTime,
-            s : 'e puer Sekonnen',
-            m : processRelativeTime,
-            mm : '%d Minutten',
-            h : processRelativeTime,
-            hh : '%d Stonnen',
-            d : processRelativeTime,
-            dd : '%d Deeg',
-            M : processRelativeTime,
-            MM : '%d Méint',
-            y : processRelativeTime,
-            yy : '%d Joer'
+        relativeTime: {
+            future: processFutureTime,
+            past: processPastTime,
+            s: 'e puer Sekonnen',
+            m: processRelativeTime,
+            mm: '%d Minutten',
+            h: processRelativeTime,
+            hh: '%d Stonnen',
+            d: processRelativeTime,
+            dd: '%d Deeg',
+            M: processRelativeTime,
+            MM: '%d Méint',
+            y: processRelativeTime,
+            yy: '%d Joer'
         },
         ordinalParse: /\d{1,2}\./,
         ordinal: '%d.',

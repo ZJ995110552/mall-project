@@ -12,6 +12,7 @@ public class EhCacheUtil {
 
     /**
      * 获取缓存
+     *
      * @param cacheName
      * @return
      */
@@ -29,6 +30,7 @@ public class EhCacheUtil {
 
     /**
      * 新增缓存记录
+     *
      * @param cacheName
      * @param key
      * @param value
@@ -43,6 +45,7 @@ public class EhCacheUtil {
 
     /**
      * 删除缓存记录
+     *
      * @param cacheName
      * @param key
      * @return
@@ -57,6 +60,7 @@ public class EhCacheUtil {
 
     /**
      * 删除全部缓存记录
+     *
      * @param cacheName
      * @return
      */
@@ -69,6 +73,7 @@ public class EhCacheUtil {
 
     /**
      * 获取缓存记录
+     *
      * @param cacheName
      * @param key
      * @return

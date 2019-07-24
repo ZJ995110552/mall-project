@@ -6,7 +6,7 @@ import com.mercury.mallproject.service.api.TestService;
 
 import java.util.List;
 
-public class TestServiceRedisImpl  implements TestService {
+public class TestServiceRedisImpl implements TestService {
     @Override
     public int addObject(Test test) {
         return 0;

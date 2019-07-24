@@ -2,7 +2,9 @@ package com.mercury.mallproject.repository.mapper;
 
 import com.mercury.mallproject.domain.SysUser;
 import com.mercury.mallproject.domain.SysUserExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface SysUserMapper {

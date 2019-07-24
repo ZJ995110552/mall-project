@@ -37,15 +37,15 @@
     H.prototype.config = {limit: 30, loading: !0}, H.prototype.render = function (e) {
         var a, l = this;
         if (e && (l.config = e), a = l.config, a.elem = t(a.elem), a.where = a.where || {}, a.request = t.extend({
-                pageName: "page",
-                limitName: "limit"
-            }, a.request), a.response = t.extend({
-                statusName: "code",
-                statusCode: 0,
-                msgName: "msg",
-                dataName: "data",
-                countName: "count"
-            }, a.response), !a.elem[0])return l;
+            pageName: "page",
+            limitName: "limit"
+        }, a.request), a.response = t.extend({
+            statusName: "code",
+            statusCode: 0,
+            msgName: "msg",
+            dataName: "data",
+            countName: "count"
+        }, a.response), !a.elem[0]) return l;
         var n = a.elem, o = n.next("." + y);
         a.height && /^full-\d+$/.test(a.height) && (l.fullHeightGap = a.height.split("-")[1], a.height = L.height() - l.fullHeightGap);
         var r = l.elem = t(i(T).render({VIEW_CLASS: y, data: a, index: l.index}));
@@ -69,7 +69,7 @@
                 data: t.extend(c, n.where),
                 dataType: "json",
                 success: function (t) {
-                    return t[r.statusName] != r.statusCode ? (a.renderForm(), a.layMain.html('<div class="' + h + '">' + (t[r.msgName] || "返回的数据状态异常") + "</div>")) : (a.renderData(t, e, t[r.countName]), d(), i && l.close(i), void("function" == typeof n.done && n.done(t, e, t[r.countName])))
+                    return t[r.statusName] != r.statusCode ? (a.renderForm(), a.layMain.html('<div class="' + h + '">' + (t[r.msgName] || "返回的数据状态异常") + "</div>")) : (a.renderData(t, e, t[r.countName]), d(), i && l.close(i), void ("function" == typeof n.done && n.done(t, e, t[r.countName])))
                 },
                 error: function (e, t) {
                     a.layMain.html('<div class="' + h + '">数据接口请求异常</div>'), a.renderForm(), i && l.close(i)
@@ -112,9 +112,9 @@
                             return r.checkbox ? "checkbox" : r.space ? "space" : s.index + "-" + (r.field || e)
                         }() + '">' + function () {
                             return r.checkbox ? '<input type="checkbox" name="layTableCheckbox" lay-skin="primary" ' + function () {
-                                    var e = d.config.checkName;
-                                    return r[e] ? (a[e] = r[e], r[e] ? "checked" : "") : a[e] ? "checked" : ""
-                                }() + ">" : r.toolbar ? i(t(r.toolbar).html() || "").render(a) : r.templet ? i(t(r.templet).html() || String(c)).render(a) : c
+                                var e = d.config.checkName;
+                                return r[e] ? (a[e] = r[e], r[e] ? "checked" : "") : a[e] ? "checked" : ""
+                            }() + ">" : r.toolbar ? i(t(r.toolbar).html() || "").render(a) : r.templet ? i(t(r.templet).html() || String(c)).render(a) : c
                         }(), "</div></td>"].join("");
                         l.push(u), r.fixed && "right" !== r.fixed && n.push(u), "right" === r.fixed && o.push(u)
                     }
@@ -123,7 +123,7 @@
                 c.scrollPatch()
             }, 50), c.haveInit = !0, void l.close(c.tipsIndex))
         };
-        return c.key = s.id || s.index, d.cache[c.key] = u, r ? m() : 0 === u.length ? (c.renderForm(), c.layFixed.remove(), c.layMain.find("tbody").html(""), c.layMain.find("." + h).remove(), c.layMain.append('<div class="' + h + '">无数据</div>')) : (m(), void(s.page && (c.page = n, c.count = o, a.render({
+        return c.key = s.id || s.index, d.cache[c.key] = u, r ? m() : 0 === u.length ? (c.renderForm(), c.layFixed.remove(), c.layMain.find("tbody").html(""), c.layMain.find("." + h).remove(), c.layMain.append('<div class="' + h + '">无数据</div>')) : (m(), void (s.page && (c.page = n, c.count = o, a.render({
             elem: "layui-table-page" + s.index,
             count: o,
             groups: 3,
@@ -143,11 +143,11 @@
         var r, c, u = this, f = {}, h = u.config, y = h.elem.attr("lay-filter"), p = d.cache[u.key];
         "string" == typeof e && u.layHeader.find("th").each(function (i, a) {
             var l = t(this), n = l.data("field");
-            if (n === e)return e = l, r = n, !1
+            if (n === e) return e = l, r = n, !1
         });
         try {
             var r = r || e.data("field");
-            if (u.sortKey && !a && r === u.sortKey.field && i === u.sortKey.sort)return;
+            if (u.sortKey && !a && r === u.sortKey.field && i === u.sortKey.sort) return;
             var m = u.layHeader.find("th .laytable-cell-" + h.index + "-" + r).find(C);
             u.layHeader.find("th").find(C).removeAttr("lay-sort"), m.attr("lay-sort", i || null), u.layFixed.find("th")
         } catch (v) {
@@ -162,7 +162,7 @@
         })
     }, H.prototype.loading = function () {
         var e = this, t = e.config;
-        if (t.loading && t.url)return l.msg("数据请求中", {
+        if (t.loading && t.url) return l.msg("数据请求中", {
             icon: 16,
             offset: [e.elem.offset().top + e.elem.height() / 2 - 35 - L.scrollTop() + "px", e.elem.offset().left + e.elem.width() / 2 - 90 - L.scrollLeft() + "px"],
             anim: -1,
@@ -181,7 +181,7 @@
     }, H.prototype.getCssRule = function (e, t) {
         var i = this, a = i.elem.find("style")[0], l = a.sheet || a.styleSheet, n = l.cssRules || l.rules;
         layui.each(n, function (a, l) {
-            if (l.selectorText === ".laytable-cell-" + i.index + "-" + e)return t(l), !0
+            if (l.selectorText === ".laytable-cell-" + i.index + "-" + e) return t(l), !0
         })
     }, H.prototype.fullSize = function () {
         var e, t = this, i = t.config, a = i.height;
@@ -344,7 +344,7 @@
                 var i = t(this), a = {};
                 i.children("td").each(function (e, i) {
                     var l = t(this), n = l.data("field");
-                    if (n)return a[n] = l.html()
+                    if (n) return a[n] = l.html()
                 }), layui.each(c, function (e, t) {
                     var l = i.children("td").eq(e);
                     a[t.field] = l.html()

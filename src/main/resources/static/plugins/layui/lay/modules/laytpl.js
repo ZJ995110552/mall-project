@@ -42,6 +42,6 @@
     };
     o.config = function (e) {
         e = e || {};
-        for (var c in e)r[c] = e[c]
+        for (var c in e) r[c] = e[c]
     }, o.v = "1.2.0", e("laytpl", o)
 });

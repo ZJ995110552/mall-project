@@ -76,7 +76,7 @@ $('.id-login').on('click', function () {
 });
 
 
-function refreshCode(){
+function refreshCode() {
     var captcha = document.getElementById("captcha");
     var captcha1 = document.getElementById("captcha1");
     // captcha.src = "/captcha.jpg?t=" + new Date().getTime();

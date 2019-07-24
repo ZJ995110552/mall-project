@@ -31,7 +31,7 @@ public class ApiTest {
 
 
     @Test
-    public void testUser(){
+    public void testUser() {
 
         SysUser sysUser = new SysUser();
 
@@ -47,9 +47,9 @@ public class ApiTest {
 
         sysUserService.save(sysUser);
     }
-    
+
     @Test
-    public void testQueryUser(){
+    public void testQueryUser() {
         SysUser wy = sysUserService.queryByUserName("wy");
 
         SysUser sysUser1 = sysUserService.queryObject("001");
@@ -57,12 +57,12 @@ public class ApiTest {
     }
 
     @Test
-    public void testUtils(){
-        logger.info("zj:"+DigestUtils.sha256Hex("zj"));
+    public void testUtils() {
+        logger.info("zj:" + DigestUtils.sha256Hex("zj"));
     }
 
     @Test
-    public void testLogOp(){
+    public void testLogOp() {
         SysLogOperation sysLogOperation = new SysLogOperation();
         sysLogOperation.setId(idGenerator.generateId());
         sysLogOperation.setRequestTime(11111);

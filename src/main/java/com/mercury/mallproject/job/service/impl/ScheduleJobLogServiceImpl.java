@@ -11,27 +11,27 @@ import java.util.Map;
 
 @Service("scheduleJobLogService")
 public class ScheduleJobLogServiceImpl implements ScheduleJobLogService {
-	@Autowired
-	private ScheduleJobLogDao scheduleJobLogDao;
-	
-	@Override
-	public ScheduleJobLogEntity queryObject(Long jobId) {
-		return scheduleJobLogDao.queryObject(jobId);
-	}
+    @Autowired
+    private ScheduleJobLogDao scheduleJobLogDao;
 
-	@Override
-	public List<ScheduleJobLogEntity> queryList(Map<String, Object> map) {
-		return scheduleJobLogDao.queryList(map);
-	}
+    @Override
+    public ScheduleJobLogEntity queryObject(Long jobId) {
+        return scheduleJobLogDao.queryObject(jobId);
+    }
 
-	@Override
-	public int queryTotal(Map<String, Object> map) {
-		return scheduleJobLogDao.queryTotal(map);
-	}
+    @Override
+    public List<ScheduleJobLogEntity> queryList(Map<String, Object> map) {
+        return scheduleJobLogDao.queryList(map);
+    }
 
-	@Override
-	public void save(ScheduleJobLogEntity log) {
-		scheduleJobLogDao.save(log);
-	}
+    @Override
+    public int queryTotal(Map<String, Object> map) {
+        return scheduleJobLogDao.queryTotal(map);
+    }
+
+    @Override
+    public void save(ScheduleJobLogEntity log) {
+        scheduleJobLogDao.save(log);
+    }
 
 }

@@ -37,8 +37,8 @@ public class Result<T> {
     /**
      * 成功返回结果
      *
-     * @param data 获取的数据
-     * @param  message 提示信息
+     * @param data    获取的数据
+     * @param message 提示信息
      */
     public static <T> Result<T> ok(T data, String message) {
         return new Result<T>(ResultCode.SUCCESS.getCode(), message, data);
@@ -59,6 +59,7 @@ public class Result<T> {
 
     /**
      * 失败返回结果
+     *
      * @param message 提示信息
      */
     public static <T> Result<T> error(String message) {
@@ -74,6 +75,7 @@ public class Result<T> {
 
     /**
      * 参数验证失败返回结果
+     *
      * @param message 提示信息
      */
     public static <T> Result<T> validateFailed(String message) {

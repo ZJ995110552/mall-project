@@ -13,10 +13,9 @@ public enum ResultCode implements EnumCode<Long> {
     UNAUTHORIZED(401, "暂未登录或token已经过期"),
     FORBIDDEN(403, "没有相关权限"),
     UNKNOWN_SERVER_ERROR(500, "未知服务器异常"),
-    CAPTCHA_ERROR(500,"验证码错误"),
-    PASSWORD_ERROR(500,"登陆密码错误"),
-    USER_NOT_FOUNT(500,"用户不存在")
-    ;
+    CAPTCHA_ERROR(500, "验证码错误"),
+    PASSWORD_ERROR(500, "登陆密码错误"),
+    USER_NOT_FOUNT(500, "用户不存在");
     private long key;
     private String description;
 
@@ -24,7 +23,7 @@ public enum ResultCode implements EnumCode<Long> {
         this.key = code;
         this.description = message;
     }
-    
+
 
     @Override
     public Long getCode() {

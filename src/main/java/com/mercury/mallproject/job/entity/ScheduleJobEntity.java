@@ -25,13 +25,13 @@ public class ScheduleJobEntity implements Serializable {
     /**
      * spring bean名称
      */
-    @NotBlank(message="bean名称不能为空")
+    @NotBlank(message = "bean名称不能为空")
     private String beanName;
 
     /**
      * 方法名
      */
-    @NotBlank(message="方法名称不能为空")
+    @NotBlank(message = "方法名称不能为空")
     private String methodName;
 
     /**
@@ -42,7 +42,7 @@ public class ScheduleJobEntity implements Serializable {
     /**
      * cron表达式
      */
-    @NotBlank(message="cron表达式不能为空")
+    @NotBlank(message = "cron表达式不能为空")
     private String cronExpression;
 
     /**
@@ -62,6 +62,7 @@ public class ScheduleJobEntity implements Serializable {
 
     /**
      * 设置：任务id
+     *
      * @param jobId 任务id
      */
     public void setJobId(Long jobId) {
@@ -70,6 +71,7 @@ public class ScheduleJobEntity implements Serializable {
 
     /**
      * 获取：任务id
+     *
      * @return Long
      */
     public Long getJobId() {
@@ -110,6 +112,7 @@ public class ScheduleJobEntity implements Serializable {
 
     /**
      * 设置：任务状态
+     *
      * @param status 任务状态
      */
     public void setStatus(Integer status) {
@@ -118,6 +121,7 @@ public class ScheduleJobEntity implements Serializable {
 
     /**
      * 获取：任务状态
+     *
      * @return String
      */
     public Integer getStatus() {
@@ -126,6 +130,7 @@ public class ScheduleJobEntity implements Serializable {
 
     /**
      * 设置：cron表达式
+     *
      * @param cronExpression cron表达式
      */
     public void setCronExpression(String cronExpression) {
@@ -134,6 +139,7 @@ public class ScheduleJobEntity implements Serializable {
 
     /**
      * 获取：cron表达式
+     *
      * @return String
      */
     public String getCronExpression() {
@@ -142,6 +148,7 @@ public class ScheduleJobEntity implements Serializable {
 
     /**
      * 设置：创建时间
+     *
      * @param createTime 创建时间
      */
     public void setCreateTime(Date createTime) {
@@ -150,6 +157,7 @@ public class ScheduleJobEntity implements Serializable {
 
     /**
      * 获取：创建时间
+     *
      * @return Date
      */
     public Date getCreateTime() {

@@ -6,30 +6,31 @@
     <script type="text/javascript" src="/demo/js/list.js"></script>
 </head>
 <body>
-<form  action="">
+<form action="">
     <div>
         <label>用户名:</label>
-        <div >
-            <input type="text" name="username" placeholder="请输入用户名" >
+        <div>
+            <input type="text" name="username" placeholder="请输入用户名">
         </div>
-        <label >操作时间:</label>
-        <div >
-            <input  placeholder="开始日" id="LAY_demorange_s" name="startDate">
-        </div>
-        <div >
-            <input  placeholder="截止日" id="LAY_demorange_e" name="endDate">
+        <label>操作时间:</label>
+        <div>
+            <input placeholder="开始日" id="LAY_demorange_s" name="startDate">
         </div>
         <div>
-            <button  id="" onclick="search('demoTable')" lay-filter="search">
-                <iclass="fa fa-search">&nbsp;</i>查询
+            <input placeholder="截止日" id="LAY_demorange_e" name="endDate">
+        </div>
+        <div>
+            <button id="" onclick="search('demoTable')" lay-filter="search">
+                <iclass
+                ="fa fa-search">&nbsp;</i>查询
             </button>
-            <button type="reset" ><i class="fa fa-refresh">&nbsp;</i>重置</button>
+            <button type="reset"><i class="fa fa-refresh">&nbsp;</i>重置</button>
         </div>
     </div>
 </form>
 
-<div >
-    <table  id="demoTable">
+<div>
+    <table id="demoTable">
         <thead>
         <tr>
             <!--复选框-->

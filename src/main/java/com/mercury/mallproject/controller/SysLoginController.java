@@ -33,6 +33,7 @@ public class SysLoginController {
 
     @Autowired
     private Producer captchaProducer = null;
+
     @RequestMapping("/images/captcha.png")
     public void getKaptchaImage(HttpServletRequest request, HttpServletResponse response) throws Exception {
         HttpSession session = request.getSession();
@@ -69,11 +70,11 @@ public class SysLoginController {
 
 
         SysUser sysUser = sysUserService.queryByUserName(username);
-        if(sysUser == null){
+        if (sysUser == null) {
             return Result.error(ResultCode.USER_NOT_FOUNT.getDescription());
-        }else if(!sysUser.getPassword().equals(DigestUtils.sha256Hex(password))){
+        } else if (!sysUser.getPassword().equals(DigestUtils.sha256Hex(password))) {
             return Result.error(ResultCode.PASSWORD_ERROR.getDescription());
-        }else{
+        } else {
             map.put("token", "");
             map.put("expire", "");
         }

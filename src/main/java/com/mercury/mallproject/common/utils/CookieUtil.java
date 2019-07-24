@@ -12,6 +12,7 @@ public class CookieUtil {
 
     /**
      * 设置cookie
+     *
      * @param response
      * @param name
      * @param value
@@ -25,18 +26,22 @@ public class CookieUtil {
         }
         response.addCookie(cookie);
     }
+
     public static void setCookie(HttpServletResponse response, String name, String value, int maxAge) {
         setCookie(response, name, value, "/", maxAge);
     }
+
     public static void setCookie(HttpServletResponse response, String name, String value) {
         setCookie(response, name, value, "/", 3600);
     }
+
     public static void setCookie(HttpServletResponse response, String name) {
         setCookie(response, name, "", "/", 3600);
     }
 
     /**
      * 获取cookie
+     *
      * @param request
      * @param name
      * @return
@@ -56,6 +61,7 @@ public class CookieUtil {
 
     /**
      * 删除cookie
+     *
      * @param response
      * @param name
      * @return

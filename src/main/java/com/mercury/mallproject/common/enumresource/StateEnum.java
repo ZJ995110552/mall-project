@@ -1,9 +1,7 @@
 package com.mercury.mallproject.common.enumresource;
 
 
-public enum StateEnum implements EnumCode<String>
-
-{
+public enum StateEnum implements EnumCode<String> {
     ENABLE("1", "正常"),
     LIMIT("0", "禁用");
     private final String code;

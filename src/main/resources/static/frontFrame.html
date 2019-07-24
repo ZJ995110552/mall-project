@@ -16,10 +16,10 @@
     <script src="/common/js/whole/utils.js"></script>
     <script>
         //重写confirm式样框
-        window.confirm = function(msg, callback){
-            parent.layer.confirm(msg, {btn: ['确定','取消']},
-                function(){//确定事件
-                    if(typeof(callback) === "function"){
+        window.confirm = function (msg, callback) {
+            parent.layer.confirm(msg, {btn: ['确定', '取消']},
+                function () {//确定事件
+                    if (typeof (callback) === "function") {
                         callback("ok");
                     }
                 });
@@ -63,7 +63,7 @@
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
                     <li><a href="/index.html" id="frontFrame"><i class="fa fa-cog"></i> &nbsp;后台管理</a></li>
-                    <li><a href="/frontFrame.html" ><i class="fa fa-home"></i> &nbsp;返回首页</a></li>
+                    <li><a href="/frontFrame.html"><i class="fa fa-home"></i> &nbsp;返回首页</a></li>
                     <li><a href="javascript:;" @click="clearStorage"><i class="fa fa-undo"></i> &nbsp;清除缓存</a></li>
                     <!--<li><a href="javascript:;" @click="updatePassword"><i class="fa fa-lock"></i> &nbsp;修改密码</a></li>-->
                     <!--<li><a href="logout"><i class="fa fa-sign-out"></i> &nbsp;退出系统</a></li>-->

@@ -269,7 +269,7 @@ a cite {
     height: 100%;
     line-height: 60px;
     text-align: center;
-    color:rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
     font-size: 20px;
     font-weight: bold;
 }
@@ -1137,13 +1137,16 @@ a cite {
 .layui-btn-danger {
     background-color: #FF5722;
 }
+
 /* 删除 */
 .layui-btn-delete {
     background-color: #ff1d33;
 }
+
 .layui-btn-green {
     background-color: #009688;
 }
+
 /* 禁用 */
 .layui-btn-disabled, .layui-btn-disabled:hover, .layui-btn-disabled:active {
     border: 1px solid #e6e6e6;
@@ -1287,14 +1290,14 @@ a cite {
 }
 
 /*.layui-form-label {*/
-    /*position: relative;*/
-    /*float: left;*/
-    /*display: block;*/
-    /*padding: 9px 15px;*/
-    /*width: 80px;*/
-    /*font-weight: normal;*/
-    /*line-height: 20px;*/
-    /*text-align: right;*/
+/*position: relative;*/
+/*float: left;*/
+/*display: block;*/
+/*padding: 9px 15px;*/
+/*width: 80px;*/
+/*font-weight: normal;*/
+/*line-height: 20px;*/
+/*text-align: right;*/
 /*}*/
 .layui-form-label {
     float: left;
@@ -1315,6 +1318,7 @@ a cite {
     font-weight: 400;
     text-align: right
 }
+
 .layui-label-left-200 {
     float: left;
     display: block;
@@ -1325,6 +1329,7 @@ a cite {
     font-weight: 400;
     text-align: right
 }
+
 .layui-label-left-450 {
     float: left;
     display: block;
@@ -1335,6 +1340,7 @@ a cite {
     font-weight: 400;
     text-align: right
 }
+
 .layui-label-right {
     float: left;
     display: block;
@@ -1363,7 +1369,7 @@ a cite {
     margin-right: 10px;
 }
 
-.layui-input-block,.layui-input-normal , .layui-input-inline {
+.layui-input-block, .layui-input-normal, .layui-input-inline {
     position: relative;
 }
 

@@ -1,138 +1,142 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.mercury.mallproject.repository.mapper.SysLogOperationMapper" >
-  <resultMap id="BaseResultMap" type="com.mercury.mallproject.domain.SysLogOperation" >
-    <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="operation" property="operation" jdbcType="VARCHAR" />
-    <result column="request_uri" property="requestUri" jdbcType="VARCHAR" />
-    <result column="request_method" property="requestMethod" jdbcType="VARCHAR" />
-    <result column="request_time" property="requestTime" jdbcType="INTEGER" />
-    <result column="user_agent" property="userAgent" jdbcType="VARCHAR" />
-    <result column="ip" property="ip" jdbcType="VARCHAR" />
-    <result column="status" property="status" jdbcType="INTEGER" />
-    <result column="creator_name" property="creatorName" jdbcType="VARCHAR" />
-    <result column="creator" property="creator" jdbcType="BIGINT" />
-    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
-  </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.mercury.mallproject.domain.SysLogOperation" extends="BaseResultMap" >
-    <result column="request_params" property="requestParams" jdbcType="LONGVARCHAR" />
-  </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+<mapper namespace="com.mercury.mallproject.repository.mapper.SysLogOperationMapper">
+    <resultMap id="BaseResultMap" type="com.mercury.mallproject.domain.SysLogOperation">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="operation" property="operation" jdbcType="VARCHAR"/>
+        <result column="request_uri" property="requestUri" jdbcType="VARCHAR"/>
+        <result column="request_method" property="requestMethod" jdbcType="VARCHAR"/>
+        <result column="request_time" property="requestTime" jdbcType="INTEGER"/>
+        <result column="user_agent" property="userAgent" jdbcType="VARCHAR"/>
+        <result column="ip" property="ip" jdbcType="VARCHAR"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+        <result column="creator_name" property="creatorName" jdbcType="VARCHAR"/>
+        <result column="creator" property="creator" jdbcType="BIGINT"/>
+        <result column="create_date" property="createDate" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="com.mercury.mallproject.domain.SysLogOperation" extends="BaseResultMap">
+        <result column="request_params" property="requestParams" jdbcType="LONGVARCHAR"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List" >
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
     id, operation, request_uri, request_method, request_time, user_agent, ip, status, 
     creator_name, creator, create_date
   </sql>
-  <sql id="Blob_Column_List" >
+    <sql id="Blob_Column_List">
     request_params
   </sql>
-  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.mercury.mallproject.domain.SysLogOperationExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    'true' as QUERYID,
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from sys_log_operation
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.mercury.mallproject.domain.SysLogOperationExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    'true' as QUERYID,
-    <include refid="Base_Column_List" />
-    from sys_log_operation
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
-    select 
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from sys_log_operation
-    where id = #{id,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs"
+            parameterType="com.mercury.mallproject.domain.SysLogOperationExample">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        'true' as QUERYID,
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from sys_log_operation
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByExample" resultMap="BaseResultMap"
+            parameterType="com.mercury.mallproject.domain.SysLogOperationExample">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        'true' as QUERYID,
+        <include refid="Base_Column_List"/>
+        from sys_log_operation
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from sys_log_operation
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from sys_log_operation
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.mercury.mallproject.domain.SysLogOperationExample" >
-    delete from sys_log_operation
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.mercury.mallproject.domain.SysLogOperation" >
+    <delete id="deleteByExample" parameterType="com.mercury.mallproject.domain.SysLogOperationExample">
+        delete from sys_log_operation
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.mercury.mallproject.domain.SysLogOperation">
     insert into sys_log_operation (id, operation, request_uri, 
       request_method, request_time, user_agent, 
       ip, status, creator_name, 
@@ -144,210 +148,211 @@
       #{creator,jdbcType=BIGINT}, #{createDate,jdbcType=TIMESTAMP}, #{requestParams,jdbcType=LONGVARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.mercury.mallproject.domain.SysLogOperation" >
-    insert into sys_log_operation
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="operation != null" >
-        operation,
-      </if>
-      <if test="requestUri != null" >
-        request_uri,
-      </if>
-      <if test="requestMethod != null" >
-        request_method,
-      </if>
-      <if test="requestTime != null" >
-        request_time,
-      </if>
-      <if test="userAgent != null" >
-        user_agent,
-      </if>
-      <if test="ip != null" >
-        ip,
-      </if>
-      <if test="status != null" >
-        status,
-      </if>
-      <if test="creatorName != null" >
-        creator_name,
-      </if>
-      <if test="creator != null" >
-        creator,
-      </if>
-      <if test="createDate != null" >
-        create_date,
-      </if>
-      <if test="requestParams != null" >
-        request_params,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=BIGINT},
-      </if>
-      <if test="operation != null" >
-        #{operation,jdbcType=VARCHAR},
-      </if>
-      <if test="requestUri != null" >
-        #{requestUri,jdbcType=VARCHAR},
-      </if>
-      <if test="requestMethod != null" >
-        #{requestMethod,jdbcType=VARCHAR},
-      </if>
-      <if test="requestTime != null" >
-        #{requestTime,jdbcType=INTEGER},
-      </if>
-      <if test="userAgent != null" >
-        #{userAgent,jdbcType=VARCHAR},
-      </if>
-      <if test="ip != null" >
-        #{ip,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null" >
-        #{status,jdbcType=INTEGER},
-      </if>
-      <if test="creatorName != null" >
-        #{creatorName,jdbcType=VARCHAR},
-      </if>
-      <if test="creator != null" >
-        #{creator,jdbcType=BIGINT},
-      </if>
-      <if test="createDate != null" >
-        #{createDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="requestParams != null" >
-        #{requestParams,jdbcType=LONGVARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.mercury.mallproject.domain.SysLogOperationExample" resultType="java.lang.Integer" >
-    select count(*) from sys_log_operation
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map" >
-    update sys_log_operation
-    <set >
-      <if test="record.id != null" >
-        id = #{record.id,jdbcType=BIGINT},
-      </if>
-      <if test="record.operation != null" >
+    <insert id="insertSelective" parameterType="com.mercury.mallproject.domain.SysLogOperation">
+        insert into sys_log_operation
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="operation != null">
+                operation,
+            </if>
+            <if test="requestUri != null">
+                request_uri,
+            </if>
+            <if test="requestMethod != null">
+                request_method,
+            </if>
+            <if test="requestTime != null">
+                request_time,
+            </if>
+            <if test="userAgent != null">
+                user_agent,
+            </if>
+            <if test="ip != null">
+                ip,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="creatorName != null">
+                creator_name,
+            </if>
+            <if test="creator != null">
+                creator,
+            </if>
+            <if test="createDate != null">
+                create_date,
+            </if>
+            <if test="requestParams != null">
+                request_params,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="operation != null">
+                #{operation,jdbcType=VARCHAR},
+            </if>
+            <if test="requestUri != null">
+                #{requestUri,jdbcType=VARCHAR},
+            </if>
+            <if test="requestMethod != null">
+                #{requestMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="requestTime != null">
+                #{requestTime,jdbcType=INTEGER},
+            </if>
+            <if test="userAgent != null">
+                #{userAgent,jdbcType=VARCHAR},
+            </if>
+            <if test="ip != null">
+                #{ip,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="creatorName != null">
+                #{creatorName,jdbcType=VARCHAR},
+            </if>
+            <if test="creator != null">
+                #{creator,jdbcType=BIGINT},
+            </if>
+            <if test="createDate != null">
+                #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="requestParams != null">
+                #{requestParams,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.mercury.mallproject.domain.SysLogOperationExample"
+            resultType="java.lang.Integer">
+        select count(*) from sys_log_operation
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update sys_log_operation
+        <set>
+            <if test="record.id != null">
+                id = #{record.id,jdbcType=BIGINT},
+            </if>
+            <if test="record.operation != null">
+                operation = #{record.operation,jdbcType=VARCHAR},
+            </if>
+            <if test="record.requestUri != null">
+                request_uri = #{record.requestUri,jdbcType=VARCHAR},
+            </if>
+            <if test="record.requestMethod != null">
+                request_method = #{record.requestMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="record.requestTime != null">
+                request_time = #{record.requestTime,jdbcType=INTEGER},
+            </if>
+            <if test="record.userAgent != null">
+                user_agent = #{record.userAgent,jdbcType=VARCHAR},
+            </if>
+            <if test="record.ip != null">
+                ip = #{record.ip,jdbcType=VARCHAR},
+            </if>
+            <if test="record.status != null">
+                status = #{record.status,jdbcType=INTEGER},
+            </if>
+            <if test="record.creatorName != null">
+                creator_name = #{record.creatorName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.creator != null">
+                creator = #{record.creator,jdbcType=BIGINT},
+            </if>
+            <if test="record.createDate != null">
+                create_date = #{record.createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.requestParams != null">
+                request_params = #{record.requestParams,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExampleWithBLOBs" parameterType="map">
+        update sys_log_operation
+        set id = #{record.id,jdbcType=BIGINT},
         operation = #{record.operation,jdbcType=VARCHAR},
-      </if>
-      <if test="record.requestUri != null" >
         request_uri = #{record.requestUri,jdbcType=VARCHAR},
-      </if>
-      <if test="record.requestMethod != null" >
         request_method = #{record.requestMethod,jdbcType=VARCHAR},
-      </if>
-      <if test="record.requestTime != null" >
         request_time = #{record.requestTime,jdbcType=INTEGER},
-      </if>
-      <if test="record.userAgent != null" >
         user_agent = #{record.userAgent,jdbcType=VARCHAR},
-      </if>
-      <if test="record.ip != null" >
         ip = #{record.ip,jdbcType=VARCHAR},
-      </if>
-      <if test="record.status != null" >
         status = #{record.status,jdbcType=INTEGER},
-      </if>
-      <if test="record.creatorName != null" >
         creator_name = #{record.creatorName,jdbcType=VARCHAR},
-      </if>
-      <if test="record.creator != null" >
         creator = #{record.creator,jdbcType=BIGINT},
-      </if>
-      <if test="record.createDate != null" >
         create_date = #{record.createDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.requestParams != null" >
-        request_params = #{record.requestParams,jdbcType=LONGVARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExampleWithBLOBs" parameterType="map" >
-    update sys_log_operation
-    set id = #{record.id,jdbcType=BIGINT},
-      operation = #{record.operation,jdbcType=VARCHAR},
-      request_uri = #{record.requestUri,jdbcType=VARCHAR},
-      request_method = #{record.requestMethod,jdbcType=VARCHAR},
-      request_time = #{record.requestTime,jdbcType=INTEGER},
-      user_agent = #{record.userAgent,jdbcType=VARCHAR},
-      ip = #{record.ip,jdbcType=VARCHAR},
-      status = #{record.status,jdbcType=INTEGER},
-      creator_name = #{record.creatorName,jdbcType=VARCHAR},
-      creator = #{record.creator,jdbcType=BIGINT},
-      create_date = #{record.createDate,jdbcType=TIMESTAMP},
-      request_params = #{record.requestParams,jdbcType=LONGVARCHAR}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map" >
-    update sys_log_operation
-    set id = #{record.id,jdbcType=BIGINT},
-      operation = #{record.operation,jdbcType=VARCHAR},
-      request_uri = #{record.requestUri,jdbcType=VARCHAR},
-      request_method = #{record.requestMethod,jdbcType=VARCHAR},
-      request_time = #{record.requestTime,jdbcType=INTEGER},
-      user_agent = #{record.userAgent,jdbcType=VARCHAR},
-      ip = #{record.ip,jdbcType=VARCHAR},
-      status = #{record.status,jdbcType=INTEGER},
-      creator_name = #{record.creatorName,jdbcType=VARCHAR},
-      creator = #{record.creator,jdbcType=BIGINT},
-      create_date = #{record.createDate,jdbcType=TIMESTAMP}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.mercury.mallproject.domain.SysLogOperation" >
-    update sys_log_operation
-    <set >
-      <if test="operation != null" >
-        operation = #{operation,jdbcType=VARCHAR},
-      </if>
-      <if test="requestUri != null" >
-        request_uri = #{requestUri,jdbcType=VARCHAR},
-      </if>
-      <if test="requestMethod != null" >
-        request_method = #{requestMethod,jdbcType=VARCHAR},
-      </if>
-      <if test="requestTime != null" >
-        request_time = #{requestTime,jdbcType=INTEGER},
-      </if>
-      <if test="userAgent != null" >
-        user_agent = #{userAgent,jdbcType=VARCHAR},
-      </if>
-      <if test="ip != null" >
-        ip = #{ip,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null" >
-        status = #{status,jdbcType=INTEGER},
-      </if>
-      <if test="creatorName != null" >
-        creator_name = #{creatorName,jdbcType=VARCHAR},
-      </if>
-      <if test="creator != null" >
-        creator = #{creator,jdbcType=BIGINT},
-      </if>
-      <if test="createDate != null" >
-        create_date = #{createDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="requestParams != null" >
-        request_params = #{requestParams,jdbcType=LONGVARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.mercury.mallproject.domain.SysLogOperation" >
+        request_params = #{record.requestParams,jdbcType=LONGVARCHAR}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update sys_log_operation
+        set id = #{record.id,jdbcType=BIGINT},
+        operation = #{record.operation,jdbcType=VARCHAR},
+        request_uri = #{record.requestUri,jdbcType=VARCHAR},
+        request_method = #{record.requestMethod,jdbcType=VARCHAR},
+        request_time = #{record.requestTime,jdbcType=INTEGER},
+        user_agent = #{record.userAgent,jdbcType=VARCHAR},
+        ip = #{record.ip,jdbcType=VARCHAR},
+        status = #{record.status,jdbcType=INTEGER},
+        creator_name = #{record.creatorName,jdbcType=VARCHAR},
+        creator = #{record.creator,jdbcType=BIGINT},
+        create_date = #{record.createDate,jdbcType=TIMESTAMP}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.mercury.mallproject.domain.SysLogOperation">
+        update sys_log_operation
+        <set>
+            <if test="operation != null">
+                operation = #{operation,jdbcType=VARCHAR},
+            </if>
+            <if test="requestUri != null">
+                request_uri = #{requestUri,jdbcType=VARCHAR},
+            </if>
+            <if test="requestMethod != null">
+                request_method = #{requestMethod,jdbcType=VARCHAR},
+            </if>
+            <if test="requestTime != null">
+                request_time = #{requestTime,jdbcType=INTEGER},
+            </if>
+            <if test="userAgent != null">
+                user_agent = #{userAgent,jdbcType=VARCHAR},
+            </if>
+            <if test="ip != null">
+                ip = #{ip,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="creatorName != null">
+                creator_name = #{creatorName,jdbcType=VARCHAR},
+            </if>
+            <if test="creator != null">
+                creator = #{creator,jdbcType=BIGINT},
+            </if>
+            <if test="createDate != null">
+                create_date = #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="requestParams != null">
+                request_params = #{requestParams,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.mercury.mallproject.domain.SysLogOperation">
     update sys_log_operation
     set operation = #{operation,jdbcType=VARCHAR},
       request_uri = #{requestUri,jdbcType=VARCHAR},
@@ -362,7 +367,7 @@
       request_params = #{requestParams,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.mercury.mallproject.domain.SysLogOperation" >
+    <update id="updateByPrimaryKey" parameterType="com.mercury.mallproject.domain.SysLogOperation">
     update sys_log_operation
     set operation = #{operation,jdbcType=VARCHAR},
       request_uri = #{requestUri,jdbcType=VARCHAR},

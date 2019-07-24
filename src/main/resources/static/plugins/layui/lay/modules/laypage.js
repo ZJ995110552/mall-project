@@ -6,18 +6,18 @@
 
  */
 
-layui.define(function(exports){
+layui.define(function (exports) {
     "use strict";
 
     var doc = document
-        ,id = 'getElementById'
-        ,tag = 'getElementsByTagName'
+        , id = 'getElementById'
+        , tag = 'getElementsByTagName'
 
         //字符常量
-        ,MOD_NAME = 'laypage', DISABLED = 'layui-disabled'
+        , MOD_NAME = 'laypage', DISABLED = 'layui-disabled'
 
         //构造器
-        ,Class = function(options){
+        , Class = function (options) {
             var that = this;
             that.config = options || {};
             that.config.index = ++laypage.index;
@@ -25,45 +25,45 @@ layui.define(function(exports){
         };
 
     //判断传入的容器类型
-    Class.prototype.type = function(){
+    Class.prototype.type = function () {
         var config = this.config;
-        if(typeof config.elem === 'object'){
+        if (typeof config.elem === 'object') {
             return config.elem.length === undefined ? 2 : 3;
         }
     };
 
     //分页视图
-    Class.prototype.view = function(){
+    Class.prototype.view = function () {
         var that = this
-            ,config = that.config;
+            , config = that.config;
 
         //排版
         config.layout = typeof config.layout === 'object'
             ? config.layout
             : ['prev', 'page', 'next'];
 
-        config.count = config.count|0; //数据总数
-        config.curr = (config.curr|0) || 1; //当前页
-        config.groups = (config.groups|0) || 5; //连续页码个数
+        config.count = config.count | 0; //数据总数
+        config.curr = (config.curr | 0) || 1; //当前页
+        config.groups = (config.groups | 0) || 5; //连续页码个数
 
         //每页条数的选择项
         config.limits = typeof config.limits === 'object'
             ? config.limits
-            : [5,10, 20, 30,50,100];
-        config.limit = (config.limit|0) || 10; //默认条数
+            : [5, 10, 20, 30, 50, 100];
+        config.limit = (config.limit | 0) || 10; //默认条数
 
         //总页数
-        config.pages = Math.ceil(config.count/config.limit) || 1;
+        config.pages = Math.ceil(config.count / config.limit) || 1;
 
         //当前页不能超过总页数
-        if(config.curr > config.pages){
+        if (config.curr > config.pages) {
             config.curr = config.pages;
         }
 
         //连续分页个数不能低于0且不能大于总页数
-        if(config.groups < 0){
+        if (config.groups < 0) {
             config.groups = 0
-        } else if (config.groups > config.pages){
+        } else if (config.groups > config.pages) {
             config.groups = config.pages;
         }
 
@@ -72,67 +72,67 @@ layui.define(function(exports){
 
         //计算当前组
         var index = config.pages > config.groups
-                ? Math.ceil( (config.curr + (config.groups > 1 ? 1 : 0)) / (config.groups > 0 ? config.groups : 1) )
-                : 1
+            ? Math.ceil((config.curr + (config.groups > 1 ? 1 : 0)) / (config.groups > 0 ? config.groups : 1))
+            : 1
 
             //试图片段
-            ,views = {
+            , views = {
                 //上一页
-                prev: function(){
+                prev: function () {
                     return config.prev
-                        ? '<a href="javascript:;" class="layui-laypage-prev'+ (config.curr == 1 ? (' ' + DISABLED) : '') +'" data-page="'+ (config.curr - 1) +'">'+ config.prev +'</a>'
+                        ? '<a href="javascript:;" class="layui-laypage-prev' + (config.curr == 1 ? (' ' + DISABLED) : '') + '" data-page="' + (config.curr - 1) + '">' + config.prev + '</a>'
                         : '';
                 }()
 
                 //页码
-                ,page: function(){
+                , page: function () {
                     var pager = [];
 
                     //数据量为0时，不输出页码
-                    if(config.count < 1){
+                    if (config.count < 1) {
                         return '';
                     }
 
                     //首页
-                    if(index > 1 && config.first !== false && config.groups !== 0){
-                        pager.push('<a href="javascript:;" class="layui-laypage-first" data-page="1"  title="&#x9996;&#x9875;">'+ (config.first || 1) +'</a>');
+                    if (index > 1 && config.first !== false && config.groups !== 0) {
+                        pager.push('<a href="javascript:;" class="layui-laypage-first" data-page="1"  title="&#x9996;&#x9875;">' + (config.first || 1) + '</a>');
                     }
 
                     //计算当前页码组的起始页
-                    var halve = Math.floor((config.groups-1)/2) //页码数等分
-                        ,start = index > 1 ? config.curr - halve : 1
-                        ,end = index > 1 ? (function(){
+                    var halve = Math.floor((config.groups - 1) / 2) //页码数等分
+                        , start = index > 1 ? config.curr - halve : 1
+                        , end = index > 1 ? (function () {
                         var max = config.curr + (config.groups - halve - 1);
                         return max > config.pages ? config.pages : max;
                     }()) : config.groups;
 
                     //防止最后一组出现“不规定”的连续页码数
-                    if(end - start < config.groups - 1){
+                    if (end - start < config.groups - 1) {
                         start = end - config.groups + 1;
                     }
 
                     //输出左分割符
-                    if(config.first !== false && start > 2){
+                    if (config.first !== false && start > 2) {
                         pager.push('<span class="layui-laypage-spr">&#x2026;</span>')
                     }
 
                     //输出连续页码
-                    for(; start <= end; start++){
-                        if(start === config.curr){
+                    for (; start <= end; start++) {
+                        if (start === config.curr) {
                             //当前页
-                            pager.push('<span class="layui-laypage-curr"><em class="layui-laypage-em" '+ (/^#/.test(config.theme) ? 'style="background-color:'+ config.theme +';"' : '') +'></em><em>'+ start +'</em></span>');
+                            pager.push('<span class="layui-laypage-curr"><em class="layui-laypage-em" ' + (/^#/.test(config.theme) ? 'style="background-color:' + config.theme + ';"' : '') + '></em><em>' + start + '</em></span>');
                         } else {
-                            pager.push('<a href="javascript:;" data-page="'+ start +'">'+ start +'</a>');
+                            pager.push('<a href="javascript:;" data-page="' + start + '">' + start + '</a>');
                         }
                     }
 
                     //输出输出右分隔符 & 末页
-                    if(config.pages > config.groups && config.pages > end && config.last !== false){
-                        if(end + 1 < config.pages){
+                    if (config.pages > config.groups && config.pages > end && config.last !== false) {
+                        if (end + 1 < config.pages) {
                             pager.push('<span class="layui-laypage-spr">&#x2026;</span>');
                         }
-                        if(config.groups !== 0){
-                            pager.push('<a href="javascript:;" class="layui-laypage-last" title="&#x5C3E;&#x9875;"  data-page="'+ config.pages +'">'+ (config.last || config.pages) +'</a>');
+                        if (config.groups !== 0) {
+                            pager.push('<a href="javascript:;" class="layui-laypage-last" title="&#x5C3E;&#x9875;"  data-page="' + config.pages + '">' + (config.last || config.pages) + '</a>');
                         }
                     }
 
@@ -140,77 +140,77 @@ layui.define(function(exports){
                 }()
 
                 //下一页
-                ,next: function(){
+                , next: function () {
                     return config.next
-                        ? '<a href="javascript:;" class="layui-laypage-next'+ (config.curr == config.pages ? (' ' + DISABLED) : '') +'" data-page="'+ (config.curr + 1) +'">'+ config.next +'</a>'
+                        ? '<a href="javascript:;" class="layui-laypage-next' + (config.curr == config.pages ? (' ' + DISABLED) : '') + '" data-page="' + (config.curr + 1) + '">' + config.next + '</a>'
                         : '';
                 }()
 
                 //数据总数
-                ,count: '<span class="layui-laypage-count">共 '+ config.count +' 条</span>'
+                , count: '<span class="layui-laypage-count">共 ' + config.count + ' 条</span>'
 
                 //每页条数
-                ,limit: function(){
+                , limit: function () {
                     var options = ['<span class="layui-laypage-limits"><select lay-ignore>'];
-                    layui.each(config.limits, function(index, item){
+                    layui.each(config.limits, function (index, item) {
                         options.push(
-                            '<option value="'+ item +'"'
-                            +(item === config.limit ? 'selected' : '')
-                            +'>'+ item +' 条/页</option>'
+                            '<option value="' + item + '"'
+                            + (item === config.limit ? 'selected' : '')
+                            + '>' + item + ' 条/页</option>'
                         );
                     });
-                    return options.join('') +'</select></span>';
+                    return options.join('') + '</select></span>';
                 }()
 
                 //跳页区域
-                ,skip: function(){
+                , skip: function () {
                     return ['<span class="layui-laypage-skip">&#x5230;&#x7B2C;'
-                        ,'<input type="text" min="1" value="'+ config.curr +'" class="layui-input">'
-                        ,'&#x9875;<button type="button" class="layui-laypage-btn">&#x786e;&#x5b9a;</button>'
-                        ,'</span>'].join('');
+                        , '<input type="text" min="1" value="' + config.curr + '" class="layui-input">'
+                        , '&#x9875;<button type="button" class="layui-laypage-btn">&#x786e;&#x5b9a;</button>'
+                        , '</span>'].join('');
                 }()
             };
 
-        return ['<div class="layui-box layui-laypage layui-laypage-'+ (config.theme ? (
+        return ['<div class="layui-box layui-laypage layui-laypage-' + (config.theme ? (
             /^#/.test(config.theme) ? 'molv' : config.theme
-        ) : 'default') +'" id="layui-laypage-'+ config.index +'">'
-            ,function(){
+        ) : 'default') + '" id="layui-laypage-' + config.index + '">'
+            , function () {
                 var plate = [];
-                layui.each(config.layout, function(index, item){
-                    if(views[item]){
+                layui.each(config.layout, function (index, item) {
+                    if (views[item]) {
                         plate.push(views[item])
                     }
                 });
                 return plate.join('');
             }()
-            ,'</div>'].join('');
+            , '</div>'].join('');
     };
 
     //跳页的回调
-    Class.prototype.jump = function(elem, isskip){
-        if(!elem) return;
+    Class.prototype.jump = function (elem, isskip) {
+        if (!elem) return;
         var that = this
-            ,config = that.config
-            ,childs = elem.children
-            ,btn = elem[tag]('button')[0]
-            ,input = elem[tag]('input')[0]
-            ,select = elem[tag]('select')[0]
-            ,skip = function(){
-            var curr = input.value.replace(/\s|\D/g, '')|0;
-            if(curr){
+            , config = that.config
+            , childs = elem.children
+            , btn = elem[tag]('button')[0]
+            , input = elem[tag]('input')[0]
+            , select = elem[tag]('select')[0]
+            , skip = function () {
+            var curr = input.value.replace(/\s|\D/g, '') | 0;
+            if (curr) {
                 config.curr = curr;
                 that.render();
             }
         };
 
-        if(isskip) return skip();
+        if (isskip) return skip();
 
         //页码
-        for(var i = 0, len = childs.length; i < len; i++){
-            if(childs[i].nodeName.toLowerCase() === 'a'){
-                laypage.on(childs[i], 'click', function(){
-                    var curr = this.getAttribute('data-page')|0;
-                    if(curr < 1 || curr > config.pages) return;
+        for (var i = 0, len = childs.length; i < len; i++) {
+            if (childs[i].nodeName.toLowerCase() === 'a') {
+                laypage.on(childs[i], 'click', function () {
+                    var curr = this.getAttribute('data-page') | 0;
+                    if (curr < 1 || curr > config.pages) return;
                     config.curr = curr;
                     that.render();
                 });
@@ -218,11 +218,11 @@ layui.define(function(exports){
         }
 
         //条数
-        if(select){
-            laypage.on(select, 'change', function(){
+        if (select) {
+            laypage.on(select, 'change', function () {
                 var value = this.value;
-                if(config.curr*value > config.count){
-                    config.curr = Math.ceil(config.count/value);
+                if (config.curr * value > config.count) {
+                    config.curr = Math.ceil(config.count / value);
                 }
                 config.limit = value;
                 that.render();
@@ -230,44 +230,44 @@ layui.define(function(exports){
         }
 
         //确定
-        if(btn){
-            laypage.on(btn, 'click', function(){
+        if (btn) {
+            laypage.on(btn, 'click', function () {
                 skip();
             });
         }
     };
 
     //输入页数字控制
-    Class.prototype.skip = function(elem){
-        if(!elem) return;
+    Class.prototype.skip = function (elem) {
+        if (!elem) return;
         var that = this, input = elem[tag]('input')[0];
-        if(!input) return;
-        laypage.on(input, 'keyup', function(e){
+        if (!input) return;
+        laypage.on(input, 'keyup', function (e) {
             var value = this.value
-                ,keyCode = e.keyCode;
-            if(/^(37|38|39|40)$/.test(keyCode)) return;
-            if(/\D/.test(value)){
+                , keyCode = e.keyCode;
+            if (/^(37|38|39|40)$/.test(keyCode)) return;
+            if (/\D/.test(value)) {
                 this.value = value.replace(/\D/, '');
             }
-            if(keyCode === 13){
+            if (keyCode === 13) {
                 that.jump(elem, true)
             }
         });
     };
 
     //渲染分页
-    Class.prototype.render = function(load){
+    Class.prototype.render = function (load) {
         var that = this
-            ,config = that.config
-            ,type = that.type()
-            ,view = that.view();
+            , config = that.config
+            , type = that.type()
+            , view = that.view();
 
-        if(type === 2){
+        if (type === 2) {
             config.elem && (config.elem.innerHTML = view);
-        } else if(type === 3){
+        } else if (type === 3) {
             config.elem.html(view);
         } else {
-            if(doc[id](config.elem)){
+            if (doc[id](config.elem)) {
                 doc[id](config.elem).innerHTML = view;
             }
         }
@@ -277,8 +277,8 @@ layui.define(function(exports){
         var elem = doc[id]('layui-laypage-' + config.index);
         that.jump(elem);
 
-        if(config.hash && !load){
-            location.hash = '!'+ config.hash +'='+ config.curr;
+        if (config.hash && !load) {
+            location.hash = '!' + config.hash + '=' + config.curr;
         }
 
         that.skip(elem);
@@ -287,13 +287,13 @@ layui.define(function(exports){
     //外部接口
     var laypage = {
         //分页渲染
-        render: function(options){
+        render: function (options) {
             var o = new Class(options);
             return o.index;
         }
-        ,index: layui.laypage ? (layui.laypage.index + 10000) : 0
-        ,on: function(elem, even, fn){
-            elem.attachEvent ? elem.attachEvent('on'+ even, function(e){
+        , index: layui.laypage ? (layui.laypage.index + 10000) : 0
+        , on: function (elem, even, fn) {
+            elem.attachEvent ? elem.attachEvent('on' + even, function (e) {
                 fn.call(elem, e); //for ie
             }) : elem.addEventListener(even, fn, false);
             return this;

@@ -27,7 +27,7 @@ import java.lang.reflect.Method;
 @Aspect
 @Component
 public class SysLogOperationAspect {
-    private static final Logger logger =  LoggerFactory.getLogger(SysLogOperationAspect.class);
+    private static final Logger logger = LoggerFactory.getLogger(SysLogOperationAspect.class);
 
     @Autowired
     private SysLogOperationService sysLogOperationService;
@@ -50,7 +50,7 @@ public class SysLogOperationAspect {
             saveLog(point, time, OperationStatusEnum.SUCCESS.getCode());
 
             return result;
-        }catch(Exception e) {
+        } catch (Exception e) {
             //执行时长(毫秒)
             long time = System.currentTimeMillis() - beginTime;
             //保存日志
@@ -66,7 +66,7 @@ public class SysLogOperationAspect {
 
         SysLogOperation log = new SysLogOperation();
         OperationLogger annotation = method.getAnnotation(OperationLogger.class);
-        if(annotation != null){
+        if (annotation != null) {
             //注解上的描述
             log.setOperation(annotation.modelName());
         }
@@ -78,7 +78,7 @@ public class SysLogOperationAspect {
 //        }
 
         log.setStatus(status);
-        log.setRequestTime((int)time);
+        log.setRequestTime((int) time);
 
         //请求相关信息
         HttpServletRequest request = HttpContextUtils.getHttpServletRequest();
@@ -89,10 +89,10 @@ public class SysLogOperationAspect {
 
         //请求参数
         Object[] args = joinPoint.getArgs();
-        try{
+        try {
             String params = JSON.toJSONString(args[0]);
             log.setRequestParams(params);
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
 
