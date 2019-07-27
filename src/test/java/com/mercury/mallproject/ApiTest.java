@@ -38,14 +38,14 @@ public class ApiTest {
         sysUser.setId(1111L);
         sysUser.setUserId("001");
         sysUser.setUsername("zj");
-        sysUser.setPassword("sss");
+        sysUser.setPassword(DigestUtils.sha256Hex("zj"));
 
 //        sysUserService.save(sysUser);
 
         sysUser.setId(1112L);
         sysUser.setUserId("002");
         sysUser.setUsername("wy");
-        sysUser.setPassword("sss");
+        sysUser.setPassword(DigestUtils.sha256Hex("wy"));
 
 //        sysUserService.save(sysUser);
     }
