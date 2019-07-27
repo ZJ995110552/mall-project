@@ -224,10 +224,11 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
+            <!-- 此plugin需要在项目src/main/java/下创建一个spring-boot启动类 -->
+            <!--<plugin>-->
+                <!--<groupId>org.springframework.boot</groupId>-->
+                <!--<artifactId>spring-boot-maven-plugin</artifactId>-->
+            <!--</plugin>-->
 
             <!--mybatis-generator插件-->
             <plugin>
