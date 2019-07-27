@@ -8,6 +8,7 @@ import com.mercury.mallproject.common.utils.CodeUtil;
 import com.mercury.mallproject.common.utils.Result;
 import com.mercury.mallproject.domain.SysUser;
 import com.mercury.mallproject.service.api.SysUserService;
+import io.swagger.annotations.Api;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,7 @@ import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.Map;
 
+@Api(value = "登陆接口", tags = "登陆接口")
 @Controller
 public class SysLoginController {
 

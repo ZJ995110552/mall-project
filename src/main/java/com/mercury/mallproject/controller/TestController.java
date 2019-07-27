@@ -3,13 +3,16 @@ package com.mercury.mallproject.controller;
 import com.mercury.mallproject.common.annotation.OperationLogger;
 import com.mercury.mallproject.domain.Test;
 import com.mercury.mallproject.service.api.TestService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import springfox.documentation.annotations.ApiIgnore;
 
+@ApiIgnore
 @Controller
 @RequestMapping("/test")
 public class TestController {
