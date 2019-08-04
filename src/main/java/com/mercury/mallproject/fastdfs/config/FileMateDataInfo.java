@@ -1,4 +1,4 @@
-package com.mercury.mallproject.fastdfs.conf;
+package com.mercury.mallproject.fastdfs.config;
 
 import com.github.tobato.fastdfs.domain.MateData;
 

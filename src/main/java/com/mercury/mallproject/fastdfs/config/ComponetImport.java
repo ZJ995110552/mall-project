@@ -1,4 +1,4 @@
-package com.mercury.mallproject.fastdfs.conf;
+package com.mercury.mallproject.fastdfs.config;
  
 import com.github.tobato.fastdfs.FdfsClientConfig;
 import org.springframework.context.annotation.Configuration;
