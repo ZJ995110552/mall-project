@@ -11,7 +11,7 @@
     <groupId>com.mercury</groupId>
     <artifactId>mall-project</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>mall-project</name>
     <description>Demo project for Spring Boot</description>
 
@@ -256,12 +256,18 @@
     </dependencies>
 
     <build>
+        <!-- 最终package打包的jar名称 -->
+        <finalName>mall</finalName>
         <plugins>
             <!-- 此plugin需要在项目src/main/java/下创建一个spring-boot启动类 -->
-            <!--<plugin>-->
-                <!--<groupId>org.springframework.boot</groupId>-->
-                <!--<artifactId>spring-boot-maven-plugin</artifactId>-->
-            <!--</plugin>-->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <!-- 指定该Main Class为全局的唯一入口 -->
+                    <mainClass>com.mercury.mallproject.StartRunApp</mainClass>
+                </configuration>
+            </plugin>
 
             <!--mybatis-generator插件-->
             <plugin>
