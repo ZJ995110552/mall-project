@@ -19,7 +19,7 @@
         </jdbcConnection>
         -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://10.211.55.6:3306/mall?useUnicode=true"
+                        connectionURL="jdbc:mysql://192.168.56.6:3306/mall?useUnicode=true"
                         userId="root"
                         password="mysql123">
         </jdbcConnection>
