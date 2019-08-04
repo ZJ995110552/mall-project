@@ -1,9 +1,10 @@
 package com.mercury.mallproject;
 
+import com.github.tobato.fastdfs.domain.ThumbImageConfig;
+import com.github.tobato.fastdfs.service.FastFileStorageClient;
 import com.mercury.mallproject.common.config.DruidConfig;
 import com.mercury.mallproject.common.id.DefaultIdGenerator;
 import com.mercury.mallproject.common.id.IdGenerator;
-import com.mercury.mallproject.domain.ext.ExtTest;
 import com.mercury.mallproject.job.service.api.ScheduleJobService;
 import com.mercury.mallproject.repository.mapper.ext.ExtTestMapper;
 import com.mercury.mallproject.service.api.TestService;
@@ -17,8 +18,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.sql.Connection;
-import java.util.ArrayList;
-import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -43,6 +42,13 @@ public class AppTest {
 
     @Autowired
     private RedisTemplate redisTemplate;
+
+    @Autowired
+    private FastFileStorageClient storageClient;
+
+    @Autowired
+    private ThumbImageConfig thumbImageConfig;
+
 
     @Test
     public void testIdGenerator() {
@@ -128,6 +134,8 @@ public class AppTest {
         logger.info("Springboot Test run ");
 
     }
+
+
 
 
 }
