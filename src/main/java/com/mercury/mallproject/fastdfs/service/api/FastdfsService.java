@@ -20,4 +20,14 @@ public interface FastdfsService {
     void delFile(String groupName,String filePath);
 
     String downloadFile(String groupName,String filePath,String fileName);
+
+    StorePath uploadFileAndUpdateFileDetail(InputStream inputStream, long fileLenth, String fileExtName, Set<MateData> metaDataSet);
+
+    StorePath uploadThumbImageAndUpdateFileDetail(InputStream inputStream, long fileLenth, String fileExtName, Set<MateData> metaDataSet);
+
+    FileInfo queryFileInfoByFileDetailId(Long fileDetailId);
+
+    void delFileAndUpdateFileDetailByFileDetailId(Long fileDetailId);
+
+    String downloadFileLByFileDetailId(Long fileDetailId);
 }
