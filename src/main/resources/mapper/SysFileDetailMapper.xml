@@ -10,6 +10,7 @@
     <result column="extention_name" property="extentionName" jdbcType="VARCHAR" />
     <result column="physical_name" property="physicalName" jdbcType="VARCHAR" />
     <result column="file_content" property="fileContent" jdbcType="VARCHAR" />
+    <result column="doc_server_id" property="docServerId" jdbcType="BIGINT" />
     <result column="doc_server_address" property="docServerAddress" jdbcType="VARCHAR" />
     <result column="server_group" property="serverGroup" jdbcType="VARCHAR" />
     <result column="server_root_dir" property="serverRootDir" jdbcType="VARCHAR" />
@@ -17,6 +18,7 @@
     <result column="creator_ip" property="creatorIp" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="del_flag" property="delFlag" jdbcType="VARCHAR" />
+    <result column="file_size" property="fileSize" jdbcType="BIGINT" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -78,8 +80,8 @@
   </sql>
   <sql id="Base_Column_List" >
     id, container_id, file_category, logical_name, description, extention_name, physical_name, 
-    file_content, doc_server_address, server_group, server_root_dir, creator, creator_ip, 
-    create_time, del_flag
+    file_content, doc_server_id, doc_server_address, server_group, server_root_dir, creator, 
+    creator_ip, create_time, del_flag, file_size
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.mercury.mallproject.fastdfs.domain.SysFileDetailExample" >
     select
@@ -115,16 +117,16 @@
   <insert id="insert" parameterType="com.mercury.mallproject.fastdfs.domain.SysFileDetail" >
     insert into sys_file_detail (id, container_id, file_category, 
       logical_name, description, extention_name, 
-      physical_name, file_content, doc_server_address, 
-      server_group, server_root_dir, creator, 
-      creator_ip, create_time, del_flag
-      )
+      physical_name, file_content, doc_server_id, 
+      doc_server_address, server_group, server_root_dir, 
+      creator, creator_ip, create_time, 
+      del_flag, file_size)
     values (#{id,jdbcType=BIGINT}, #{containerId,jdbcType=BIGINT}, #{fileCategory,jdbcType=VARCHAR}, 
       #{logicalName,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{extentionName,jdbcType=VARCHAR}, 
-      #{physicalName,jdbcType=VARCHAR}, #{fileContent,jdbcType=VARCHAR}, #{docServerAddress,jdbcType=VARCHAR}, 
-      #{serverGroup,jdbcType=VARCHAR}, #{serverRootDir,jdbcType=VARCHAR}, #{creator,jdbcType=VARCHAR}, 
-      #{creatorIp,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{delFlag,jdbcType=VARCHAR}
-      )
+      #{physicalName,jdbcType=VARCHAR}, #{fileContent,jdbcType=VARCHAR}, #{docServerId,jdbcType=BIGINT}, 
+      #{docServerAddress,jdbcType=VARCHAR}, #{serverGroup,jdbcType=VARCHAR}, #{serverRootDir,jdbcType=VARCHAR}, 
+      #{creator,jdbcType=VARCHAR}, #{creatorIp,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{delFlag,jdbcType=VARCHAR}, #{fileSize,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" parameterType="com.mercury.mallproject.fastdfs.domain.SysFileDetail" >
     insert into sys_file_detail
@@ -153,6 +155,9 @@
       <if test="fileContent != null" >
         file_content,
       </if>
+      <if test="docServerId != null" >
+        doc_server_id,
+      </if>
       <if test="docServerAddress != null" >
         doc_server_address,
       </if>
@@ -173,6 +178,9 @@
       </if>
       <if test="delFlag != null" >
         del_flag,
+      </if>
+      <if test="fileSize != null" >
+        file_size,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -200,6 +208,9 @@
       <if test="fileContent != null" >
         #{fileContent,jdbcType=VARCHAR},
       </if>
+      <if test="docServerId != null" >
+        #{docServerId,jdbcType=BIGINT},
+      </if>
       <if test="docServerAddress != null" >
         #{docServerAddress,jdbcType=VARCHAR},
       </if>
@@ -220,6 +231,9 @@
       </if>
       <if test="delFlag != null" >
         #{delFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="fileSize != null" >
+        #{fileSize,jdbcType=BIGINT},
       </if>
     </trim>
   </insert>
@@ -256,6 +270,9 @@
       <if test="record.fileContent != null" >
         file_content = #{record.fileContent,jdbcType=VARCHAR},
       </if>
+      <if test="record.docServerId != null" >
+        doc_server_id = #{record.docServerId,jdbcType=BIGINT},
+      </if>
       <if test="record.docServerAddress != null" >
         doc_server_address = #{record.docServerAddress,jdbcType=VARCHAR},
       </if>
@@ -277,6 +294,9 @@
       <if test="record.delFlag != null" >
         del_flag = #{record.delFlag,jdbcType=VARCHAR},
       </if>
+      <if test="record.fileSize != null" >
+        file_size = #{record.fileSize,jdbcType=BIGINT},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -292,13 +312,15 @@
       extention_name = #{record.extentionName,jdbcType=VARCHAR},
       physical_name = #{record.physicalName,jdbcType=VARCHAR},
       file_content = #{record.fileContent,jdbcType=VARCHAR},
+      doc_server_id = #{record.docServerId,jdbcType=BIGINT},
       doc_server_address = #{record.docServerAddress,jdbcType=VARCHAR},
       server_group = #{record.serverGroup,jdbcType=VARCHAR},
       server_root_dir = #{record.serverRootDir,jdbcType=VARCHAR},
       creator = #{record.creator,jdbcType=VARCHAR},
       creator_ip = #{record.creatorIp,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      del_flag = #{record.delFlag,jdbcType=VARCHAR}
+      del_flag = #{record.delFlag,jdbcType=VARCHAR},
+      file_size = #{record.fileSize,jdbcType=BIGINT}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -327,6 +349,9 @@
       <if test="fileContent != null" >
         file_content = #{fileContent,jdbcType=VARCHAR},
       </if>
+      <if test="docServerId != null" >
+        doc_server_id = #{docServerId,jdbcType=BIGINT},
+      </if>
       <if test="docServerAddress != null" >
         doc_server_address = #{docServerAddress,jdbcType=VARCHAR},
       </if>
@@ -348,6 +373,9 @@
       <if test="delFlag != null" >
         del_flag = #{delFlag,jdbcType=VARCHAR},
       </if>
+      <if test="fileSize != null" >
+        file_size = #{fileSize,jdbcType=BIGINT},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -360,13 +388,15 @@
       extention_name = #{extentionName,jdbcType=VARCHAR},
       physical_name = #{physicalName,jdbcType=VARCHAR},
       file_content = #{fileContent,jdbcType=VARCHAR},
+      doc_server_id = #{docServerId,jdbcType=BIGINT},
       doc_server_address = #{docServerAddress,jdbcType=VARCHAR},
       server_group = #{serverGroup,jdbcType=VARCHAR},
       server_root_dir = #{serverRootDir,jdbcType=VARCHAR},
       creator = #{creator,jdbcType=VARCHAR},
       creator_ip = #{creatorIp,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
-      del_flag = #{delFlag,jdbcType=VARCHAR}
+      del_flag = #{delFlag,jdbcType=VARCHAR},
+      file_size = #{fileSize,jdbcType=BIGINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

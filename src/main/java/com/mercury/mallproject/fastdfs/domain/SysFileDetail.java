@@ -19,6 +19,8 @@ public class SysFileDetail {
 
     private String fileContent;
 
+    private Long docServerId;
+
     private String docServerAddress;
 
     private String serverGroup;
@@ -32,6 +34,8 @@ public class SysFileDetail {
     private Date createTime;
 
     private String delFlag;
+
+    private Long fileSize;
 
     public Long getId() {
         return id;
@@ -97,6 +101,14 @@ public class SysFileDetail {
         this.fileContent = fileContent == null ? null : fileContent.trim();
     }
 
+    public Long getDocServerId() {
+        return docServerId;
+    }
+
+    public void setDocServerId(Long docServerId) {
+        this.docServerId = docServerId;
+    }
+
     public String getDocServerAddress() {
         return docServerAddress;
     }
@@ -151,5 +163,13 @@ public class SysFileDetail {
 
     public void setDelFlag(String delFlag) {
         this.delFlag = delFlag == null ? null : delFlag.trim();
+    }
+
+    public Long getFileSize() {
+        return fileSize;
+    }
+
+    public void setFileSize(Long fileSize) {
+        this.fileSize = fileSize;
     }
 }
