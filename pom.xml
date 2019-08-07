@@ -59,7 +59,6 @@
             <version>2.1.1.RELEASE</version>
         </dependency>
 
-
         <!-- spring-boot-starter-quartz -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -77,7 +76,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
-
 
         <!-- mybatis-generator -->
         <dependency>
@@ -185,7 +183,7 @@
             <version>2.9.0</version>
         </dependency>
 
-
+        <!-- swagger2 -->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
@@ -216,7 +214,6 @@
 
         </dependency>
 
-
         <!-- swagger -->
         <dependency>
             <groupId>io.springfox</groupId>
@@ -224,6 +221,24 @@
             <version>2.6.1</version>
         </dependency>
 
+        <!-- jwt -->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+            <version>0.10.5</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>0.10.5</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId>
+            <version>0.10.5</version>
+            <scope>runtime</scope>
+        </dependency>
 
         <!-- 常用工具包 -->
         <dependency>
