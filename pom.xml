@@ -240,6 +240,12 @@
             <scope>runtime</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>4.2</version>
+        </dependency>
+
         <!-- 常用工具包 -->
         <dependency>
             <groupId>commons-beanutils</groupId>
