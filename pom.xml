@@ -352,6 +352,15 @@
                 </configuration>
             </plugin>
 
+            <!-- maven打包时跳过test方法检查 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+
             <!--mybatis-generator插件-->
             <plugin>
                 <!--Mybatis-generator插件,用于自动生成Mapper和POJO-->
