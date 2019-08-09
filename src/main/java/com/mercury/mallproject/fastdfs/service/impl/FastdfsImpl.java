@@ -16,7 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.Date;
 import java.util.Set;
@@ -80,13 +79,6 @@ public class FastdfsImpl implements FastdfsService {
 //        sysFileDetail.setFileCategory(); // 枚举类型:缩略图/原图/文档/压缩包
 
         sysFileDetail.setPhysicalName(StringUtils.substringAfterLast(storePath.getFullPath(), File.separator));
-        try {
-            Integer available = inputStream.available();
-            sysFileDetail.setFileSize(available.longValue());
-        } catch (IOException e) {
-            sysFileDetail.setFileSize(0L);
-        }
-
         sysFileDetail.setExtentionName(fileExtName);
         sysFileDetail.setServerGroup(storePath.getGroup());
         sysFileDetail.setServerRootDir(storePath.getFullPath());
@@ -113,13 +105,6 @@ public class FastdfsImpl implements FastdfsService {
 //        sysFileDetail.setFileCategory(); // 枚举类型:缩略图/原图/文档/压缩包 暂未区分
 
         sysFileDetail.setPhysicalName(StringUtils.substringAfterLast(storePath.getFullPath(), File.separator));
-        try {
-            Integer available = inputStream.available();
-            sysFileDetail.setFileSize(available.longValue());
-        } catch (IOException e) {
-            sysFileDetail.setFileSize(0L);
-        }
-
         sysFileDetail.setExtentionName(fileExtName);
         sysFileDetail.setServerGroup(storePath.getGroup());
         sysFileDetail.setServerRootDir(storePath.getFullPath());

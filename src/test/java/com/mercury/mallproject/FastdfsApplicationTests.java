@@ -5,6 +5,7 @@ import com.github.tobato.fastdfs.domain.MateData;
 import com.github.tobato.fastdfs.domain.StorePath;
 import com.github.tobato.fastdfs.domain.ThumbImageConfig;
 import com.github.tobato.fastdfs.service.FastFileStorageClient;
+import com.mercury.mallproject.activiti.config.ActivitiConfig;
 import com.mercury.mallproject.fastdfs.service.api.FastdfsService;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Before;
@@ -29,6 +30,9 @@ import java.util.Set;
 public class FastdfsApplicationTests {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(FastdfsApplicationTests.class);
+
+    @Autowired
+    private ActivitiConfig activitiConfig;
 
     File file = null;
 
@@ -143,9 +147,9 @@ public class FastdfsApplicationTests {
     @Test
     public void downLoadFile() {
 
-        fastdfsService.downloadFile(groupName,filePath,filename);
+        fastdfsService.downloadFile(groupName, filePath, filename);
         // StorageDownloadCommand<String> stringStorageDownloadCommand = new StorageDownloadCommand<>(variables.groupName, variables.path, callback);
-       // String fileName = commandTestBase.executeStoreCmd(stringStorageDownloadCommand);
+        // String fileName = commandTestBase.executeStoreCmd(stringStorageDownloadCommand);
     }
 
     /**
@@ -171,10 +175,13 @@ public class FastdfsApplicationTests {
     }
 
     @Test
-    public void print(){System.out.println(0);}
+    public void print() {
+        System.out.println(0);
+        activitiConfig.initTable();
+    }
 
     @Test
-    public void print1(){
+    public void print1() {
 
         String aa = "group2/M00/00/00/wKg4G11K0FOAbyRcAAWqj983vqs515.png";
 
@@ -185,5 +192,5 @@ public class FastdfsApplicationTests {
         FileInfo fileInfo = fastdfsService.queryFileInfoByFileDetailId(79333345254707200L);
 
     }
- 
+
 }
