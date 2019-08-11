@@ -17,6 +17,8 @@ public class SysFileDetail {
 
     private String physicalName;
 
+    private Long fileSize;
+
     private String fileContent;
 
     private Long docServerId;
@@ -34,8 +36,6 @@ public class SysFileDetail {
     private Date createTime;
 
     private String delFlag;
-
-    private Long fileSize;
 
     public Long getId() {
         return id;
@@ -91,6 +91,14 @@ public class SysFileDetail {
 
     public void setPhysicalName(String physicalName) {
         this.physicalName = physicalName == null ? null : physicalName.trim();
+    }
+
+    public Long getFileSize() {
+        return fileSize;
+    }
+
+    public void setFileSize(Long fileSize) {
+        this.fileSize = fileSize;
     }
 
     public String getFileContent() {
@@ -163,13 +171,5 @@ public class SysFileDetail {
 
     public void setDelFlag(String delFlag) {
         this.delFlag = delFlag == null ? null : delFlag.trim();
-    }
-
-    public Long getFileSize() {
-        return fileSize;
-    }
-
-    public void setFileSize(Long fileSize) {
-        this.fileSize = fileSize;
     }
 }

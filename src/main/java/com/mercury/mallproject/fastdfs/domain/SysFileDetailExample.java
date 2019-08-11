@@ -575,6 +575,66 @@ public class SysFileDetailExample {
             return (Criteria) this;
         }
 
+        public Criteria andFileSizeIsNull() {
+            addCriterion("file_size is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileSizeIsNotNull() {
+            addCriterion("file_size is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileSizeEqualTo(Long value) {
+            addCriterion("file_size =", value, "fileSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileSizeNotEqualTo(Long value) {
+            addCriterion("file_size <>", value, "fileSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileSizeGreaterThan(Long value) {
+            addCriterion("file_size >", value, "fileSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileSizeGreaterThanOrEqualTo(Long value) {
+            addCriterion("file_size >=", value, "fileSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileSizeLessThan(Long value) {
+            addCriterion("file_size <", value, "fileSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileSizeLessThanOrEqualTo(Long value) {
+            addCriterion("file_size <=", value, "fileSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileSizeIn(List<Long> values) {
+            addCriterion("file_size in", values, "fileSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileSizeNotIn(List<Long> values) {
+            addCriterion("file_size not in", values, "fileSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileSizeBetween(Long value1, Long value2) {
+            addCriterion("file_size between", value1, value2, "fileSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileSizeNotBetween(Long value1, Long value2) {
+            addCriterion("file_size not between", value1, value2, "fileSize");
+            return (Criteria) this;
+        }
+
         public Criteria andFileContentIsNull() {
             addCriterion("file_content is null");
             return (Criteria) this;
@@ -1182,66 +1242,6 @@ public class SysFileDetailExample {
 
         public Criteria andDelFlagNotBetween(String value1, String value2) {
             addCriterion("del_flag not between", value1, value2, "delFlag");
-            return (Criteria) this;
-        }
-
-        public Criteria andFileSizeIsNull() {
-            addCriterion("file_size is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andFileSizeIsNotNull() {
-            addCriterion("file_size is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andFileSizeEqualTo(Long value) {
-            addCriterion("file_size =", value, "fileSize");
-            return (Criteria) this;
-        }
-
-        public Criteria andFileSizeNotEqualTo(Long value) {
-            addCriterion("file_size <>", value, "fileSize");
-            return (Criteria) this;
-        }
-
-        public Criteria andFileSizeGreaterThan(Long value) {
-            addCriterion("file_size >", value, "fileSize");
-            return (Criteria) this;
-        }
-
-        public Criteria andFileSizeGreaterThanOrEqualTo(Long value) {
-            addCriterion("file_size >=", value, "fileSize");
-            return (Criteria) this;
-        }
-
-        public Criteria andFileSizeLessThan(Long value) {
-            addCriterion("file_size <", value, "fileSize");
-            return (Criteria) this;
-        }
-
-        public Criteria andFileSizeLessThanOrEqualTo(Long value) {
-            addCriterion("file_size <=", value, "fileSize");
-            return (Criteria) this;
-        }
-
-        public Criteria andFileSizeIn(List<Long> values) {
-            addCriterion("file_size in", values, "fileSize");
-            return (Criteria) this;
-        }
-
-        public Criteria andFileSizeNotIn(List<Long> values) {
-            addCriterion("file_size not in", values, "fileSize");
-            return (Criteria) this;
-        }
-
-        public Criteria andFileSizeBetween(Long value1, Long value2) {
-            addCriterion("file_size between", value1, value2, "fileSize");
-            return (Criteria) this;
-        }
-
-        public Criteria andFileSizeNotBetween(Long value1, Long value2) {
-            addCriterion("file_size not between", value1, value2, "fileSize");
             return (Criteria) this;
         }
     }
