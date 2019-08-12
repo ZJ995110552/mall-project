@@ -3,6 +3,7 @@ package com.mercury.mallproject.log.aspect;
 
 import com.alibaba.fastjson.JSON;
 import com.google.common.net.HttpHeaders;
+import com.mercury.mallproject.common.utils.DateUtils;
 import com.mercury.mallproject.log.aspect.annotaion.OperationLogger;
 import com.mercury.mallproject.common.enums.OperationStatusEnum;
 import com.mercury.mallproject.common.utils.HttpContextUtils;
@@ -75,6 +76,7 @@ public class SysLogOperationAspect {
 //        if(user != null){
 //            log.setCreatorName(user.getUsername());
 //        }
+        log.setCreateDate(DateUtils.getNowDate());
 
         log.setStatus(status);
         log.setRequestTime((int) time);
