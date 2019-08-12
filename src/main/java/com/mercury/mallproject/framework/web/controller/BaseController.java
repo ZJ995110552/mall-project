@@ -3,7 +3,7 @@ package com.mercury.mallproject.framework.web.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.mercury.mallproject.common.enumresource.ResultCodeEnum;
-import com.mercury.mallproject.common.response.AjaxResult;
+import com.mercury.mallproject.common.response.R1;
 import com.mercury.mallproject.common.utils.DateUtils;
 import com.mercury.mallproject.common.utils.StringUtils;
 import com.mercury.mallproject.framework.page.PageDomain;
@@ -73,7 +73,7 @@ public class BaseController
      * @param rows 影响行数
      * @return 操作结果
      */
-    protected AjaxResult toAjax(int rows)
+    protected R1 toAjax(int rows)
     {
         return rows > 0 ? success() : error();
     }
@@ -81,41 +81,41 @@ public class BaseController
     /**
      * 返回成功
      */
-    public AjaxResult success()
+    public R1 success()
     {
-        return AjaxResult.success();
+        return R1.ok();
     }
 
     /**
      * 返回失败消息
      */
-    public AjaxResult error()
+    public R1 error()
     {
-        return AjaxResult.error();
+        return R1.error();
     }
 
     /**
      * 返回成功消息
      */
-    public AjaxResult success(String message)
+    public R1 success(String message)
     {
-        return AjaxResult.success(message);
+        return R1.ok(message);
     }
 
     /**
      * 返回失败消息
      */
-    public AjaxResult error(String message)
+    public R1 error(String message)
     {
-        return AjaxResult.error(message);
+        return R1.error(message);
     }
 
     /**
      * 返回错误码消息
      */
-    public AjaxResult error(int code, String message)
+    public R1 error(int code, String message)
     {
-        return AjaxResult.error(code, message);
+        return R1.error(code, message);
     }
 
     /**
