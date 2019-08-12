@@ -2,91 +2,128 @@ package com.mercury.mallproject.common.utils;
 
 import com.mercury.mallproject.common.enumresource.EnumCode;
 import com.mercury.mallproject.common.enumresource.IsInitEnum;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
 
 public class EnumUtil {
 	
-    public static <K,T extends EnumCode<K>> T[] getEnumConstants(Class<T> enumClass) {
-        if(!enumClass.isEnum()){
-            return null;
-        }
-        T[] tObj = enumClass.getEnumConstants();
-        return tObj;
-    }
-    
-    
-    public static <K,T extends EnumCode<K>> HashMap<K,String> getKeyDescriptionMap(Class<T> enumClass) {
-    	HashMap<K, String> enumMap = new HashMap<K, String>();
-    	
-    	if(!enumClass.isEnum()){
-            return null;
-        }
-    	
-    	T[] enumConstants = enumClass.getEnumConstants();
-    	
-    	for (T enumObj : enumConstants) {
-    		enumMap.put( enumObj.getCode(), enumObj.getDescription());
-    	}
-    	
-    	return enumMap;
-    }
-    
-    
-    
-    
-	public static HashMap<String,String> getValues(Class<?> enumClass) {
-		HashMap<String, String> hashMap = new HashMap<String, String>();
-		
-//		Object[] constants = getEnumConstants(enumClass);
-//		List<String> values = new ArrayList<String>();
-//		for (Object constant : constants) {
-//			values.add(((Enum<?>) constant).toString());
-//		}
-//		return values.toArray(new String[values.size()]);
-		
-		//判断类是不是枚举类
-		if(!enumClass.isEnum()){
+	public static <K, E extends EnumCode<K>> E getEnumByKey(Class<E> clazz, K key) {
+		if (Enum.class.isAssignableFrom(clazz)) {
+			if (key == null) {
+				return null;
+			}
+			E[] enumConstants = clazz.getEnumConstants();
+			if (ArrayUtils.isNotEmpty(enumConstants)) {
+				for (E e : enumConstants) {
+					if (key instanceof String && ObjectUtils.equals(String.valueOf(e.getCode()), key)) {
+						return e;
+					} else if (ObjectUtils.equals(e.getCode(), key)) {
+						return e;
+
+					}
+				}
+			}
 			return null;
-			
 		}
-		Object[] enumConstants = enumClass.getEnumConstants();
-		
-		System.out.println(enumClass);
-		//遍历内部内
-//		for (Class class1 : enumClass) {
-//			//判断类是不是枚举类
-//			if(class1.isEnum()){
-//				//获取内部内的类名，在这里其实就是获取枚举类
-//				 String simpleName = class1.getSimpleName();
-//				//反射获取枚举类
-//				 Class<Enum> clazz = (Class<Enum>)Class.forName("com.zr.entity.Constant$"+simpleName);
-//				 //获取所有枚举实例
-//				 Enum[] enumConstants = clazz.getEnumConstants();
-//				 //根据方法名获取方法
-//				 Method getCode = clazz.getMethod("getDesc");
-//				 for (Enum enum1 : enumConstants) {
-//				 	 //得到枚举实例名
-//					 String name2 = enum1.name();
-//					 //执行枚举方法获得枚举实例对应的值
-//					 Object invoke = getCode.invoke(enum1);
-//					 System.out.println(name2+":"+invoke.toString());
-//				 }
-//			 }
-		
 		return null;
 	}
 	
-	public static void main(String[] args) {
-		IsInitEnum[] enumAttributeObject = EnumUtil.getEnumConstants(IsInitEnum.class);
-		System.out.println(enumAttributeObject);
-		HashMap<String, String> values = EnumUtil.getValues(IsInitEnum.class);
-
-		HashMap<String, String> keyDescriptionMap = EnumUtil.getKeyDescriptionMap(IsInitEnum.class);
-
-		System.out.println(keyDescriptionMap);
-		
+	public static <K, E extends EnumCode<K>> E getEnumByDescription(Class<E> clazz, String description) {
+		if (Enum.class.isAssignableFrom(clazz)) {
+			if (StringUtils.isEmpty(description)) {
+				return null;
+			}
+			E[] enumConstants = clazz.getEnumConstants();
+			if (ArrayUtils.isNotEmpty(enumConstants)) {
+				for (E e : enumConstants) {
+					if (StringUtils.equals(e.getDescription(), description)) {
+						return e;
+					}
+				}
+			}
+			return null;
+		}
+		return null;
 	}
 	
+	public static EnumCode getEnumByDescriptionWithGenericClass(Class clazz, String description) {
+		if (Enum.class.isAssignableFrom(clazz)) {
+			if (StringUtils.isEmpty(description)) {
+				return null;
+			}
+			Object[] enumConstants = clazz.getEnumConstants();
+			if (ArrayUtils.isNotEmpty(enumConstants)) {
+				for (Object e : enumConstants) {
+					if (StringUtils.equals(((EnumCode)e).getDescription(), description)) {
+						return (EnumCode)e;
+					}
+				}
+			}
+			return null;
+		}
+		return null;
+	}
+	
+	public static <K, E extends EnumCode<K>> K getEnumKey(E enumV) {
+		if(enumV == null){
+			return null;
+		}
+		return enumV.getCode();
+	}
+
+	public static <K,T extends EnumCode<K>> T[] getEnumConstants(Class<T> enumClass) {
+		if(!enumClass.isEnum()){
+			return null;
+		}
+		T[] tObj = enumClass.getEnumConstants();
+		return tObj;
+	}
+
+
+	public static <K,T extends EnumCode<K>> HashMap<K,String> getEnumMap(Class<T> enumClass) {
+		HashMap<K, String> enumMap = new HashMap();
+
+		if(!enumClass.isEnum()){
+			return null;
+		}
+
+		T[] enumConstants = enumClass.getEnumConstants();
+
+		for (T enumObj : enumConstants) {
+			enumMap.put( enumObj.getCode(), enumObj.getDescription());
+		}
+
+		return enumMap;
+	}
+
+	public static void main(String[] args) {
+		System.out.println("========================================");
+		IsInitEnum enum1 = EnumUtil.getEnumByKey(IsInitEnum.class, "0");
+		System.out.println(enum1);
+		System.out.println("========================================");
+		IsInitEnum anEnum = EnumUtil.getEnumByDescription(IsInitEnum.class, "是");
+		System.out.println(anEnum);
+		System.out.println("========================================");
+		EnumCode aaa = EnumUtil.getEnumByDescriptionWithGenericClass(IsInitEnum.class, "是");
+		System.out.println(aaa);
+		System.out.println("========================================");
+		HashMap<String, String> enumMap = EnumUtil.getEnumMap(IsInitEnum.class);
+		Iterator<Map.Entry<String, String>> iterator = enumMap.entrySet().iterator();
+		while(iterator.hasNext()){
+			Map.Entry<String, String> entry = iterator.next();
+			System.out.println("code = " + entry.getKey() + ", value = " + entry.getValue());
+		}
+		System.out.println("========================================");
+		IsInitEnum[] enumConstants = EnumUtil.getEnumConstants(IsInitEnum.class);
+		for (IsInitEnum is: enumConstants) {
+			System.out.println("key = " + is.toString() + ", code = " + is.getCode() + ", value = " + is.getDescription());
+		}
+	}
 
 }
