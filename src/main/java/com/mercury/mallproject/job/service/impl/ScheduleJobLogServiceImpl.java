@@ -1,8 +1,8 @@
 package com.mercury.mallproject.job.service.impl;
 
 import com.mercury.mallproject.job.entity.ScheduleJobLogEntity;
-import com.mercury.mallproject.job.repository.mapper.ScheduleJobLogDao;
-import com.mercury.mallproject.job.service.api.ScheduleJobLogService;
+import com.mercury.mallproject.job.mapper.ScheduleJobLogDao;
+import com.mercury.mallproject.job.service.ScheduleJobLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

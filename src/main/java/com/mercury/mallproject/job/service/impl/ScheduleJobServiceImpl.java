@@ -2,8 +2,8 @@ package com.mercury.mallproject.job.service.impl;
 
 import com.mercury.mallproject.job.common.Constant;
 import com.mercury.mallproject.job.entity.ScheduleJobEntity;
-import com.mercury.mallproject.job.repository.mapper.ScheduleJobDao;
-import com.mercury.mallproject.job.service.api.ScheduleJobService;
+import com.mercury.mallproject.job.mapper.ScheduleJobDao;
+import com.mercury.mallproject.job.service.ScheduleJobService;
 import com.mercury.mallproject.job.utils.ScheduleUtils;
 
 import org.quartz.CronTrigger;

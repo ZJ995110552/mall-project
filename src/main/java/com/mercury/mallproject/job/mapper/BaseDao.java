@@ -1,4 +1,4 @@
-package com.mercury.mallproject.job.repository.mapper;
+package com.mercury.mallproject.job.mapper;
 
 import java.util.List;
 import java.util.Map;

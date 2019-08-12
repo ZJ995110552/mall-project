@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.mercury.mallproject.common.utils.SpringContextUtils;
 import com.mercury.mallproject.job.entity.ScheduleJobEntity;
 import com.mercury.mallproject.job.entity.ScheduleJobLogEntity;
-import com.mercury.mallproject.job.service.api.ScheduleJobLogService;
+import com.mercury.mallproject.job.service.ScheduleJobLogService;
 import org.apache.commons.lang3.StringUtils;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;

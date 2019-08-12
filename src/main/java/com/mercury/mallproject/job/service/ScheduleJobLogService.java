@@ -1,4 +1,4 @@
-package com.mercury.mallproject.job.service.api;
+package com.mercury.mallproject.job.service;
 
 
 import com.mercury.mallproject.job.entity.ScheduleJobLogEntity;

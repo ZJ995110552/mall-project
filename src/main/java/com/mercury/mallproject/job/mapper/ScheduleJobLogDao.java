@@ -1,7 +1,6 @@
-package com.mercury.mallproject.job.repository.mapper;
+package com.mercury.mallproject.job.mapper;
 
 import com.mercury.mallproject.job.entity.ScheduleJobLogEntity;
-import org.apache.ibatis.annotations.Mapper;
 
 /**
  * 定时任务日志

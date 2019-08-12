@@ -1,7 +1,6 @@
-package com.mercury.mallproject.job.repository.mapper;
+package com.mercury.mallproject.job.mapper;
 
 import com.mercury.mallproject.job.entity.ScheduleJobEntity;
-import org.apache.ibatis.annotations.Mapper;
 
 import java.util.Map;
 
