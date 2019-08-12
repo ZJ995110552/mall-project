@@ -1,4 +1,4 @@
-package com.mercury.mallproject.fastdfs.service.api;
+package com.mercury.mallproject.fastdfs.service;
 
 import com.github.tobato.fastdfs.domain.FileInfo;
 import com.github.tobato.fastdfs.domain.MateData;

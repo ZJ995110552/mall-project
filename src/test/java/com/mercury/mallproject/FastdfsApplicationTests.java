@@ -6,7 +6,7 @@ import com.github.tobato.fastdfs.domain.StorePath;
 import com.github.tobato.fastdfs.domain.ThumbImageConfig;
 import com.github.tobato.fastdfs.service.FastFileStorageClient;
 import com.mercury.mallproject.activiti.config.ActivitiConfig;
-import com.mercury.mallproject.fastdfs.service.api.FastdfsService;
+import com.mercury.mallproject.fastdfs.service.FastdfsService;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Before;
 import org.junit.Test;

@@ -44,7 +44,7 @@
         </sqlMapGenerator>
         <!-- 生成DAO的包名和位置 -->
         <javaClientGenerator type="XMLMAPPER"
-                             targetPackage="com.mercury.mallproject.fastdfs.repository.mapper" targetProject="src/main/java">
+                             targetPackage="com.mercury.mallproject.fastdfs.mapper" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!-- 要生成哪些表 -->

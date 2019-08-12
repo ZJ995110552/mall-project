@@ -1,9 +1,10 @@
-package com.mercury.mallproject.fastdfs.repository.mapper;
+package com.mercury.mallproject.fastdfs.mapper;
 
 import com.mercury.mallproject.fastdfs.domain.SysFileDetail;
 import com.mercury.mallproject.fastdfs.domain.SysFileDetailExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface SysFileDetailMapper {
     int countByExample(SysFileDetailExample example);
