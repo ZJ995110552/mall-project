@@ -1,6 +1,6 @@
 package com.mercury.mallproject.project.controller;
 
-import com.mercury.mallproject.common.annotation.OperationLogger;
+import com.mercury.mallproject.log.aspect.annotaion.OperationLogger;
 import com.mercury.mallproject.project.domain.Test;
 import com.mercury.mallproject.project.service.api.TestService;
 import org.springframework.beans.factory.annotation.Autowired;

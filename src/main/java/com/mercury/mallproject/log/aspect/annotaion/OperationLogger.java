@@ -1,4 +1,4 @@
-package com.mercury.mallproject.common.annotation;
+package com.mercury.mallproject.log.aspect.annotaion;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -1,9 +1,9 @@
-package com.mercury.mallproject.common.aspect;
+package com.mercury.mallproject.log.aspect;
 
 
 import com.alibaba.fastjson.JSON;
 import com.google.common.net.HttpHeaders;
-import com.mercury.mallproject.common.annotation.OperationLogger;
+import com.mercury.mallproject.log.aspect.annotaion.OperationLogger;
 import com.mercury.mallproject.common.enums.OperationStatusEnum;
 import com.mercury.mallproject.common.utils.HttpContextUtils;
 import com.mercury.mallproject.common.utils.IpUtils;
@@ -31,7 +31,7 @@ public class SysLogOperationAspect {
     @Autowired
     private SysLogOperationService sysLogOperationService;
 
-    @Pointcut("@annotation(com.mercury.mallproject.common.annotation.OperationLogger)")
+    @Pointcut("@annotation(com.mercury.mallproject.log.aspect.annotaion.OperationLogger)")
     public void logPointCut() {
 
     }
