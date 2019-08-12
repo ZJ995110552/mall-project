@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.mercury.mallproject.repository.mapper.SysLogOperationMapper">
-    <resultMap id="BaseResultMap" type="com.mercury.mallproject.domain.SysLogOperation">
+<mapper namespace="com.mercury.mallproject.log.mapper.SysLogOperationMapper">
+    <resultMap id="BaseResultMap" type="com.mercury.mallproject.log.domain.SysLogOperation">
         <id column="id" property="id" jdbcType="BIGINT"/>
         <result column="operation" property="operation" jdbcType="VARCHAR"/>
         <result column="request_uri" property="requestUri" jdbcType="VARCHAR"/>
@@ -14,7 +14,7 @@
         <result column="creator" property="creator" jdbcType="BIGINT"/>
         <result column="create_date" property="createDate" jdbcType="TIMESTAMP"/>
     </resultMap>
-    <resultMap id="ResultMapWithBLOBs" type="com.mercury.mallproject.domain.SysLogOperation" extends="BaseResultMap">
+    <resultMap id="ResultMapWithBLOBs" type="com.mercury.mallproject.log.domain.SysLogOperation" extends="BaseResultMap">
         <result column="request_params" property="requestParams" jdbcType="LONGVARCHAR"/>
     </resultMap>
     <sql id="Example_Where_Clause">
@@ -85,7 +85,7 @@
     request_params
   </sql>
     <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs"
-            parameterType="com.mercury.mallproject.domain.SysLogOperationExample">
+            parameterType="com.mercury.mallproject.log.domain.SysLogOperationExample">
         select
         <if test="distinct">
             distinct
@@ -103,7 +103,7 @@
         </if>
     </select>
     <select id="selectByExample" resultMap="BaseResultMap"
-            parameterType="com.mercury.mallproject.domain.SysLogOperationExample">
+            parameterType="com.mercury.mallproject.log.domain.SysLogOperationExample">
         select
         <if test="distinct">
             distinct
@@ -130,13 +130,13 @@
     delete from sys_log_operation
     where id = #{id,jdbcType=BIGINT}
   </delete>
-    <delete id="deleteByExample" parameterType="com.mercury.mallproject.domain.SysLogOperationExample">
+    <delete id="deleteByExample" parameterType="com.mercury.mallproject.log.domain.SysLogOperationExample">
         delete from sys_log_operation
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="com.mercury.mallproject.domain.SysLogOperation">
+    <insert id="insert" parameterType="com.mercury.mallproject.log.domain.SysLogOperation">
     insert into sys_log_operation (id, operation, request_uri, 
       request_method, request_time, user_agent, 
       ip, status, creator_name, 
@@ -148,7 +148,7 @@
       #{creator,jdbcType=BIGINT}, #{createDate,jdbcType=TIMESTAMP}, #{requestParams,jdbcType=LONGVARCHAR}
       )
   </insert>
-    <insert id="insertSelective" parameterType="com.mercury.mallproject.domain.SysLogOperation">
+    <insert id="insertSelective" parameterType="com.mercury.mallproject.log.domain.SysLogOperation">
         insert into sys_log_operation
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -227,7 +227,7 @@
             </if>
         </trim>
     </insert>
-    <select id="countByExample" parameterType="com.mercury.mallproject.domain.SysLogOperationExample"
+    <select id="countByExample" parameterType="com.mercury.mallproject.log.domain.SysLogOperationExample"
             resultType="java.lang.Integer">
         select count(*) from sys_log_operation
         <if test="_parameter != null">
@@ -313,7 +313,7 @@
             <include refid="Update_By_Example_Where_Clause"/>
         </if>
     </update>
-    <update id="updateByPrimaryKeySelective" parameterType="com.mercury.mallproject.domain.SysLogOperation">
+    <update id="updateByPrimaryKeySelective" parameterType="com.mercury.mallproject.log.domain.SysLogOperation">
         update sys_log_operation
         <set>
             <if test="operation != null">
@@ -352,7 +352,7 @@
         </set>
         where id = #{id,jdbcType=BIGINT}
     </update>
-    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.mercury.mallproject.domain.SysLogOperation">
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.mercury.mallproject.log.domain.SysLogOperation">
     update sys_log_operation
     set operation = #{operation,jdbcType=VARCHAR},
       request_uri = #{requestUri,jdbcType=VARCHAR},
@@ -367,7 +367,7 @@
       request_params = #{requestParams,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
-    <update id="updateByPrimaryKey" parameterType="com.mercury.mallproject.domain.SysLogOperation">
+    <update id="updateByPrimaryKey" parameterType="com.mercury.mallproject.log.domain.SysLogOperation">
     update sys_log_operation
     set operation = #{operation,jdbcType=VARCHAR},
       request_uri = #{requestUri,jdbcType=VARCHAR},

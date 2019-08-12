@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.mercury.mallproject.repository.mapper.TestMapper">
-    <resultMap id="BaseResultMap" type="com.mercury.mallproject.domain.Test">
+<mapper namespace="com.mercury.mallproject.project.mapper.TestMapper">
+    <resultMap id="BaseResultMap" type="com.mercury.mallproject.project.domain.Test">
         <result column="id" property="id" jdbcType="INTEGER"/>
         <result column="user_id" property="userId" jdbcType="VARCHAR"/>
         <result column="user_name" property="userName" jdbcType="VARCHAR"/>
@@ -69,7 +69,7 @@
     <sql id="Base_Column_List">
     id, user_id, user_name
   </sql>
-    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.mercury.mallproject.domain.TestExample">
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.mercury.mallproject.project.domain.TestExample">
         select
         <if test="distinct">
             distinct
@@ -84,19 +84,19 @@
             order by ${orderByClause}
         </if>
     </select>
-    <delete id="deleteByExample" parameterType="com.mercury.mallproject.domain.TestExample">
+    <delete id="deleteByExample" parameterType="com.mercury.mallproject.project.domain.TestExample">
         delete from test
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="com.mercury.mallproject.domain.Test">
+    <insert id="insert" parameterType="com.mercury.mallproject.project.domain.Test">
     insert into test (id, user_id, user_name
       )
     values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}
       )
   </insert>
-    <insert id="insertSelective" parameterType="com.mercury.mallproject.domain.Test">
+    <insert id="insertSelective" parameterType="com.mercury.mallproject.project.domain.Test">
         insert into test
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -121,7 +121,7 @@
             </if>
         </trim>
     </insert>
-    <select id="countByExample" parameterType="com.mercury.mallproject.domain.TestExample"
+    <select id="countByExample" parameterType="com.mercury.mallproject.project.domain.TestExample"
             resultType="java.lang.Integer">
         select count(*) from test
         <if test="_parameter != null">

@@ -17,7 +17,7 @@ public class Swagger2Config {
 		return new Docket(DocumentationType.SWAGGER_2)
 				.apiInfo(apiInfo())
 				.select()
-				.apis(RequestHandlerSelectors.basePackage("com.mercury.mallproject.controller"))
+				.apis(RequestHandlerSelectors.basePackage("com.mercury.mallproject.project.controller"))
 				.paths(PathSelectors.any())
 				.build();
 	}

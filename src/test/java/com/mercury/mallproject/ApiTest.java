@@ -2,10 +2,10 @@ package com.mercury.mallproject;
 
 import com.mercury.mallproject.common.id.DefaultIdGenerator;
 import com.mercury.mallproject.common.id.IdGenerator;
-import com.mercury.mallproject.domain.SysLogOperation;
-import com.mercury.mallproject.domain.SysUser;
-import com.mercury.mallproject.repository.mapper.SysLogOperationMapper;
-import com.mercury.mallproject.service.api.SysUserService;
+import com.mercury.mallproject.log.domain.SysLogOperation;
+import com.mercury.mallproject.project.domain.SysUser;
+import com.mercury.mallproject.log.mapper.SysLogOperationMapper;
+import com.mercury.mallproject.project.service.api.SysUserService;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;

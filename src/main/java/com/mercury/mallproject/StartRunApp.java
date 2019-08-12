@@ -8,7 +8,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 
 @ComponentScan("com.mercury.mallproject.*")
-@MapperScan(basePackages = {"com.mercury.mallproject.repository.mapper", "com.mercury.mallproject.repository.mapper.*", "com.mercury.mallproject.job.repository.mapper", "com.mercury.mallproject.fastdfs.repository.mapper"})
+@MapperScan(basePackages = {"com.mercury.mallproject.project.mapper", "com.mercury.mallproject.project.mapper.*", "com.mercury.mallproject.job.repository.mapper", "com.mercury.mallproject.fastdfs.repository.mapper"})
 @SpringBootApplication
 @EnableSwagger2
 public class StartRunApp {

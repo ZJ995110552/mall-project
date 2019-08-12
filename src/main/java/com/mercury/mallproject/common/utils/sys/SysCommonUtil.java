@@ -1,7 +1,7 @@
 package com.mercury.mallproject.common.utils.sys;
 
 import com.mercury.mallproject.common.constant.ShiroConstants;
-import com.mercury.mallproject.domain.SysUser;
+import com.mercury.mallproject.project.domain.SysUser;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
 

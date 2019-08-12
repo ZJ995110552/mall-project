@@ -1,10 +1,10 @@
 package com.mercury.mallproject.monitor.operationlog.controller;
 
 
-import com.mercury.mallproject.domain.SysLogOperation;
+import com.mercury.mallproject.log.domain.SysLogOperation;
 import com.mercury.mallproject.framework.page.TableDataInfo;
 import com.mercury.mallproject.framework.web.controller.BaseController;
-import com.mercury.mallproject.service.api.SysLogOperationService;
+import com.mercury.mallproject.log.service.SysLogOperationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
