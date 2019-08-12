@@ -7,7 +7,7 @@ import com.mercury.mallproject.common.enums.ResultEnum;
 import com.mercury.mallproject.common.response.R;
 import com.mercury.mallproject.common.utils.CodeUtil;
 import com.mercury.mallproject.project.domain.SysUser;
-import com.mercury.mallproject.project.service.api.SysUserService;
+import com.mercury.mallproject.project.service.SysUserService;
 import io.swagger.annotations.Api;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;

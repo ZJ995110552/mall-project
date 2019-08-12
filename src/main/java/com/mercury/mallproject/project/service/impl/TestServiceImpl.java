@@ -5,7 +5,7 @@ import com.mercury.mallproject.project.domain.ext.ExtTest;
 import com.mercury.mallproject.project.mapper.TestMapper;
 import com.mercury.mallproject.project.domain.TestExample;
 import com.mercury.mallproject.project.mapper.ext.ExtTestMapper;
-import com.mercury.mallproject.project.service.api.TestService;
+import com.mercury.mallproject.project.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

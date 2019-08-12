@@ -7,7 +7,7 @@ import com.mercury.mallproject.common.id.DefaultIdGenerator;
 import com.mercury.mallproject.common.id.IdGenerator;
 import com.mercury.mallproject.job.service.ScheduleJobService;
 import com.mercury.mallproject.project.mapper.ext.ExtTestMapper;
-import com.mercury.mallproject.project.service.api.TestService;
+import com.mercury.mallproject.project.service.TestService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;

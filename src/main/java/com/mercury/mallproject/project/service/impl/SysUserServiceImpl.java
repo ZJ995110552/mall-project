@@ -4,7 +4,7 @@ import com.google.common.collect.Iterables;
 import com.mercury.mallproject.project.domain.SysUser;
 import com.mercury.mallproject.project.domain.SysUserExample;
 import com.mercury.mallproject.project.mapper.SysUserMapper;
-import com.mercury.mallproject.project.service.api.SysUserService;
+import com.mercury.mallproject.project.service.SysUserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

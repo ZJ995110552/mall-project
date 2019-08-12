@@ -2,7 +2,7 @@ package com.mercury.mallproject.project.service.impl;
 
 import com.mercury.mallproject.project.domain.Test;
 import com.mercury.mallproject.project.domain.ext.ExtTest;
-import com.mercury.mallproject.project.service.api.TestService;
+import com.mercury.mallproject.project.service.TestService;
 
 import java.util.List;
 

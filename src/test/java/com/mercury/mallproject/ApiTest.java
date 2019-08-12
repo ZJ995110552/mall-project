@@ -5,7 +5,7 @@ import com.mercury.mallproject.common.id.IdGenerator;
 import com.mercury.mallproject.log.domain.SysLogOperation;
 import com.mercury.mallproject.project.domain.SysUser;
 import com.mercury.mallproject.log.mapper.SysLogOperationMapper;
-import com.mercury.mallproject.project.service.api.SysUserService;
+import com.mercury.mallproject.project.service.SysUserService;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;

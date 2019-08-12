@@ -2,7 +2,7 @@ package com.mercury.mallproject.project.controller;
 
 import com.mercury.mallproject.log.aspect.annotaion.OperationLogger;
 import com.mercury.mallproject.project.domain.Test;
-import com.mercury.mallproject.project.service.api.TestService;
+import com.mercury.mallproject.project.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

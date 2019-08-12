@@ -1,4 +1,4 @@
-package com.mercury.mallproject.project.service.api;
+package com.mercury.mallproject.project.service;
 
 import com.mercury.mallproject.project.domain.SysUser;
 
