@@ -1,8 +1,8 @@
 package com.mercury.mallproject.common.utils.poi;
 
 import com.google.common.collect.Lists;
-import com.mercury.mallproject.common.annotation.Annotations;
-import com.mercury.mallproject.common.annotation.Table;
+import com.mercury.mallproject.common.aspect.annotation.Annotations;
+import com.mercury.mallproject.common.aspect.annotation.Table;
 import org.apache.commons.lang3.StringUtils;
 
 import java.lang.reflect.Field;

@@ -1,4 +1,4 @@
-package com.mercury.mallproject.common.annotation;
+package com.mercury.mallproject.common.aspect.annotation;
 
 import com.google.common.collect.Lists;
 import org.springframework.core.annotation.AnnotationUtils;
