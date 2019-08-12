@@ -2,8 +2,8 @@ package com.mercury.mallproject.framework.web.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.mercury.mallproject.common.enumresource.ResultCodeEnum;
-import com.mercury.mallproject.common.response.R1;
+import com.mercury.mallproject.common.enumresource.ResultEnum;
+import com.mercury.mallproject.common.response.R;
 import com.mercury.mallproject.common.utils.DateUtils;
 import com.mercury.mallproject.common.utils.StringUtils;
 import com.mercury.mallproject.framework.page.PageDomain;
@@ -61,7 +61,7 @@ public class BaseController
     protected TableDataInfo getDataTable(List<?> list)
     {
         TableDataInfo rspData = new TableDataInfo();
-        rspData.setCode(ResultCodeEnum.SUCCESS.getCode().intValue());
+        rspData.setCode(ResultEnum.SUCCESS.getCode().intValue());
         rspData.setRows(list);
         rspData.setTotal(new PageInfo(list).getTotal());
         return rspData;
@@ -73,7 +73,7 @@ public class BaseController
      * @param rows 影响行数
      * @return 操作结果
      */
-    protected R1 toAjax(int rows)
+    protected R toAjax(int rows)
     {
         return rows > 0 ? success() : error();
     }
@@ -81,41 +81,41 @@ public class BaseController
     /**
      * 返回成功
      */
-    public R1 success()
+    public R success()
     {
-        return R1.ok();
+        return R.ok();
     }
 
     /**
      * 返回失败消息
      */
-    public R1 error()
+    public R error()
     {
-        return R1.error();
+        return R.error();
     }
 
     /**
      * 返回成功消息
      */
-    public R1 success(String message)
+    public R success(String message)
     {
-        return R1.ok(message);
+        return R.ok(message);
     }
 
     /**
      * 返回失败消息
      */
-    public R1 error(String message)
+    public R error(String message)
     {
-        return R1.error(message);
+        return R.error(message);
     }
 
     /**
      * 返回错误码消息
      */
-    public R1 error(int code, String message)
+    public R error(int code, String message)
     {
-        return R1.error(code, message);
+        return R.error(code, message);
     }
 
     /**

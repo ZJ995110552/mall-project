@@ -3,7 +3,7 @@ package com.mercury.mallproject.controller;
 
 import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.Producer;
-import com.mercury.mallproject.common.enumresource.ResultCodeEnum;
+import com.mercury.mallproject.common.enumresource.ResultEnum;
 import com.mercury.mallproject.common.response.R;
 import com.mercury.mallproject.common.utils.CodeUtil;
 import com.mercury.mallproject.domain.SysUser;
@@ -60,28 +60,28 @@ public class SysLoginController {
 
     @ResponseBody
     @RequestMapping(value = "/sys/login", method = RequestMethod.POST)
-    public R<Map<String, Object>> login(@RequestParam("username") String username, @RequestParam("password") String password, HttpServletRequest request) {
+    public R login(@RequestParam("username") String username, @RequestParam("password") String password, HttpServletRequest request) {
 
 
         Map<String, Object> map = new HashMap<>();
 
 
         if (!CodeUtil.checkVerifyCode(request)) {
-            return R.error(ResultCodeEnum.CAPTCHA_ERROR.getDescription());
+            return R.error(ResultEnum.CAPTCHA_ERROR.getDescription());
         }
 
 
         SysUser sysUser = sysUserService.queryByUserName(username);
         if (sysUser == null) {
-            return R.error(ResultCodeEnum.USER_NOT_FOUNT.getDescription());
+            return R.error(ResultEnum.USER_NOT_FOUNT.getDescription());
         } else if (!sysUser.getPassword().equals(DigestUtils.sha256Hex(password))) {
-            return R.error(ResultCodeEnum.PASSWORD_ERROR.getDescription());
+            return R.error(ResultEnum.PASSWORD_ERROR.getDescription());
         } else {
             map.put("token", "");
             map.put("expire", "");
         }
 
-        return R.ok(map);
+        return R.ok();
 
     }
 

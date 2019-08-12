@@ -3,10 +3,10 @@ package com.mercury.mallproject.common.enumresource;
 /**
  * 常用API操作码
  */
-public enum ResultCodeEnum implements EnumCode<Integer> {
+public enum ResultEnum implements EnumCode<Integer> {
     SUCCESS(0, "操作成功"),
     FAILED(1, "操作失败"),
-    VALIDATE_FAILED(404, "参数检验失败"),
+    VALIDATE_FAILED(400, "参数检验失败"),
     UNAUTHORIZED(401, "暂未登录或token已经过期"),
     FORBIDDEN(403, "没有相关权限"),
     UNKNOWN_SERVER_ERROR(500, "未知服务器异常"),
@@ -16,9 +16,9 @@ public enum ResultCodeEnum implements EnumCode<Integer> {
     private int key;
     private String description;
 
-    private ResultCodeEnum(int code, String message) {
+    private ResultEnum(int code, String description) {
         this.key = code;
-        this.description = message;
+        this.description = description;
     }
 
 

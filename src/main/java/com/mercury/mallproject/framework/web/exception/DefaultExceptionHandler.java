@@ -1,6 +1,6 @@
 package com.mercury.mallproject.framework.web.exception;
 
-import com.mercury.mallproject.common.response.R1;
+import com.mercury.mallproject.common.response.R;
 import com.mercury.mallproject.common.utils.sys.PermissionUtils;
 import org.apache.shiro.authz.AuthorizationException;
 import org.slf4j.Logger;
@@ -23,40 +23,40 @@ public class DefaultExceptionHandler
      * 权限校验失败
      */
     @ExceptionHandler(AuthorizationException.class)
-    public R1 handleAuthorizationException(AuthorizationException e)
+    public R handleAuthorizationException(AuthorizationException e)
     {
         log.error(e.getMessage(), e);
-        return R1.error(PermissionUtils.getMsg(e.getMessage()));
+        return R.error(PermissionUtils.getMsg(e.getMessage()));
     }
 
     /**
      * 请求方式不支持
      */
     @ExceptionHandler({ HttpRequestMethodNotSupportedException.class })
-    public R1 handleException(HttpRequestMethodNotSupportedException e)
+    public R handleException(HttpRequestMethodNotSupportedException e)
     {
         log.error(e.getMessage(), e);
-        return R1.error("不支持' " + e.getMethod() + "'请求");
+        return R.error("不支持' " + e.getMethod() + "'请求");
     }
 
     /**
      * 拦截未知的运行时异常
      */
     @ExceptionHandler(RuntimeException.class)
-    public R1 notFount(RuntimeException e)
+    public R notFount(RuntimeException e)
     {
         log.error("运行时异常:", e);
-        return R1.error("运行时异常:" + e.getMessage());
+        return R.error("运行时异常:" + e.getMessage());
     }
 
     /**
      * 系统异常
      */
     @ExceptionHandler(Exception.class)
-    public R1 handleException(Exception e)
+    public R handleException(Exception e)
     {
         log.error(e.getMessage(), e);
-        return R1.error("服务器错误，请联系管理员");
+        return R.error("服务器错误，请联系管理员");
     }
 
 

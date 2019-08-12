@@ -1,75 +1,111 @@
 package com.mercury.mallproject.common.response;
 
-import com.mercury.mallproject.common.enumresource.ResultCodeEnum;
+import com.mercury.mallproject.common.enumresource.ResultEnum;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
- * 通用返回对象
+ * 操作消息提醒
+ *
+ * @author ruoyi
  */
-public class R<T> {
-    private long code;
-    private String message;
-    private T data;
+public class R extends HashMap<String, Object> {
+    private static final long serialVersionUID = 1L;
 
+    /**
+     * 初始化一个新创建的 Message 对象
+     */
     protected R() {
     }
 
-    protected R(long code, String message, T data) {
-        this.code = code;
-        this.message = message;
-        this.data = data;
-    }
-
-    public static <T> R<T> ok() {
-        return new R<T>(ResultCodeEnum.SUCCESS.getCode(), ResultCodeEnum.SUCCESS.getDescription(), null);
-    }
-
-
     /**
-     * 成功返回结果
+     * 返回成功消息
      *
-     * @param data 获取的数据
+     * @return 成功消息
      */
-    public static <T> R<T> ok(T data) {
-        return new R<T>(ResultCodeEnum.SUCCESS.getCode(), ResultCodeEnum.SUCCESS.getDescription(), data);
+    public static R ok() {
+        return R.ok(ResultEnum.SUCCESS.getDescription());
     }
 
     /**
-     * 成功返回结果
+     * 返回成功消息
      *
-     * @param data    获取的数据
-     * @param message 提示信息
+     * @param msg 内容
+     * @return 成功消息
      */
-    public static <T> R<T> ok(T data, String message) {
-        return new R<T>(ResultCodeEnum.SUCCESS.getCode(), message, data);
+    public static R ok(String msg) {
+        R json = new R();
+        json.put("code", ResultEnum.SUCCESS.getCode());
+        json.put("msg", msg);
+        return json;
     }
 
-    public static <T> R<T> error() {
-        return new R<T>(ResultCodeEnum.UNKNOWN_SERVER_ERROR.getCode(), ResultCodeEnum.UNKNOWN_SERVER_ERROR.getDescription(), null);
-    }
-
-
     /**
-     * 失败返回结果
-     * @param errorCode 错误码
-     */
-//    public static <T> R<T> error(ErrorCode errorCode) {
-//        return new R<T>(errorCode.getCode(), errorCode.getDescription(), null);
-//    }
-
-    /**
-     * 失败返回结果
+     * 返回成功消息,并传入数据信息
      *
-     * @param message 提示信息
+     * @param map
+     * @return
      */
-    public static <T> R<T> error(String message) {
-        return new R<T>(ResultCodeEnum.FAILED.getCode(), message, null);
+    public static R ok(Map<String, Object> map) {
+        R json = new R();
+        json.put("code", ResultEnum.SUCCESS.getCode());
+        json.put("msg", ResultEnum.SUCCESS.getDescription());
+        json.putAll(map);
+        return json;
+    }
+
+    /**
+     * 返回错误消息
+     *
+     * @return 错误消息
+     */
+    public static R error() {
+        return error(ResultEnum.FAILED.getCode(), ResultEnum.FAILED.getDescription());
+    }
+
+    /**
+     * 返回错误消息
+     *
+     * @param msg 内容
+     * @return 错误消息
+     */
+    public static R error(String msg) {
+        return error(ResultEnum.FAILED.getCode(), msg);
+    }
+
+    /**
+     * 返回错误消息
+     *
+     * @param code 错误码
+     * @param msg  内容
+     * @return 错误消息
+     */
+    public static R error(Integer code, String msg) {
+        R json = new R();
+        json.put("code", code);
+        json.put("msg", msg);
+        return json;
+    }
+
+    /**
+     * 返回成功消息
+     *
+     * @param key   键值
+     * @param value 内容
+     * @return 成功消息
+     */
+    @Override
+    public R put(String key, Object value) {
+        super.put(key, value);
+        return this;
     }
 
     /**
      * 参数验证失败返回结果
      */
-    public static <T> R<T> validateFailed() {
-        return error(ResultCodeEnum.VALIDATE_FAILED.getDescription());
+    public static R validateFailed() {
+        return error(ResultEnum.VALIDATE_FAILED.getCode(), ResultEnum.VALIDATE_FAILED.getDescription());
     }
 
     /**
@@ -77,45 +113,73 @@ public class R<T> {
      *
      * @param message 提示信息
      */
-    public static <T> R<T> validateFailed(String message) {
-        return new R<T>(ResultCodeEnum.VALIDATE_FAILED.getCode(), message, null);
+    public static R validateFailed(String message) {
+        return error(ResultEnum.VALIDATE_FAILED.getCode(), message);
     }
 
     /**
      * 未登录返回结果
      */
-    public static <T> R<T> unauthorized(T data) {
-        return new R<T>(ResultCodeEnum.UNAUTHORIZED.getCode(), ResultCodeEnum.UNAUTHORIZED.getDescription(), data);
+    public static R unauthorized() {
+        return error(ResultEnum.UNAUTHORIZED.getCode(), ResultEnum.UNAUTHORIZED.getDescription());
+    }
+
+    /**
+     * 未登录返回结果
+     *
+     * @param message 提示信息
+     */
+    public static R unauthorized(String message) {
+        return error(ResultEnum.UNAUTHORIZED.getCode(), message);
     }
 
     /**
      * 未授权返回结果
      */
-    public static <T> R<T> forbidden(T data) {
-        return new R<T>(ResultCodeEnum.FORBIDDEN.getCode(), ResultCodeEnum.FORBIDDEN.getDescription(), data);
+    public static R forbidden() {
+        return error(ResultEnum.FORBIDDEN.getCode(), ResultEnum.FORBIDDEN.getDescription());
     }
 
-    public long getCode() {
-        return code;
+    /**
+     * 未授权返回结果
+     *
+     * @param message 提示信息
+     */
+    public static R forbidden(String message) {
+        return error(ResultEnum.FORBIDDEN.getCode(), message);
     }
 
-    public void setCode(long code) {
-        this.code = code;
-    }
 
-    public String getMessage() {
-        return message;
-    }
+    public static void main(String[] args) {
+        System.out.println("====================================");
+        R ok = R.ok();
+        ok.forEach((key, value) -> {
+            System.out.println(key + ":" + value);
+        });
+        System.out.println("====================================");
+        R error = R.error();
+        error.forEach((key, value) -> {
+            System.out.println(key + ":" + value);
+        });
+        System.out.println("====================================");
+        R forbidden = R.forbidden();
+        forbidden.forEach((key, value) -> {
+            System.out.println(key + ":" + value);
+        });
+        System.out.println("====================================");
+        HashMap<String, Object> stringStringHashMap = new HashMap<>();
+        stringStringHashMap.put("aaa", "111");
+        stringStringHashMap.put("bbb", "222");
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
+        R ok1 = R.ok(stringStringHashMap);
+        ok1.forEach((key, value) -> {
+            System.out.println(key + ":" + value);
+        });
+        System.out.println("====================================");
+        R put = R.ok().put("AAA", "111").put("BBB", "222");
+        put.forEach((key, value) -> {
+            System.out.println(key + ":" + value);
+        });
 
-    public T getData() {
-        return data;
-    }
-
-    public void setData(T data) {
-        this.data = data;
     }
 }

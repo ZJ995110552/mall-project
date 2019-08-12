@@ -1,6 +1,6 @@
 package com.mercury.mallproject.common.utils.poi;
 
-import com.mercury.mallproject.common.response.R1;
+import com.mercury.mallproject.common.response.R;
 import com.mercury.mallproject.common.utils.DateUtils;
 import com.mercury.mallproject.common.utils.StringUtils;
 import com.mercury.mallproject.framework.aspectj.annotation.Excel;
@@ -193,7 +193,7 @@ public class ExcelUtil<T>
      * @param sheetName 工作表的名称
      * @return 结果
      */
-    public R1 exportExcel(List<T> list, String sheetName)
+    public R exportExcel(List<T> list, String sheetName)
     {
         OutputStream out = null;
         HSSFWorkbook workbook = null;
@@ -351,12 +351,12 @@ public class ExcelUtil<T>
             String filename = encodingFilename(sheetName);
             out = new FileOutputStream(getAbsoluteFile(filename));
             workbook.write(out);
-            return R1.ok(filename);
+            return R.ok(filename);
         }
         catch (Exception e)
         {
             log.error("导出Excel异常{}", e.getMessage());
-            return R1.error("导出Excel失败，请联系网站管理员！");
+            return R.error("导出Excel失败，请联系网站管理员！");
         }
         finally
         {
