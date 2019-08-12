@@ -15,6 +15,8 @@ public interface FastdfsService {
 
     FileInfo queryFileInfo(String groupName,String filePath);
 
+    void delFile(Long fileDetailId);
+
     void delFile(String filePath);
 
     void delFile(String groupName,String filePath);

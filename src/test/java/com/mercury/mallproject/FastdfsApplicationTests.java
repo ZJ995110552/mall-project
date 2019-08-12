@@ -191,6 +191,7 @@ public class FastdfsApplicationTests {
 
         FileInfo fileInfo = fastdfsService.queryFileInfoByFileDetailId(79333345254707200L);
 
+        fastdfsService.delFile(79323027694686208L);
     }
 
 }

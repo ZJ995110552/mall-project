@@ -51,6 +51,13 @@ public class FastdfsImpl implements FastdfsService {
     }
 
     @Override
+    public void delFile(Long fileDetailId) {
+        SysFileDetail sysFileDetail = sysFileDetailMapper.selectByPrimaryKey(fileDetailId);
+        storageClient.deleteFile(sysFileDetail.getServerGroup(),StringUtils.substringAfter(sysFileDetail.getServerRootDir(),sysFileDetail.getServerGroup()+File.separator));
+        sysFileDetailMapper.deleteByPrimaryKey(fileDetailId);
+    }
+
+    @Override
     public void delFile(String filePath) {
         storageClient.deleteFile(filePath);
     }
