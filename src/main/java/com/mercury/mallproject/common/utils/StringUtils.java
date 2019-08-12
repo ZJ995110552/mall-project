@@ -5,12 +5,17 @@ import org.apache.commons.lang.text.StrBuilder;
 
 import java.util.Collection;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * 字符串工具类
  */
 public class StringUtils extends org.apache.commons.lang3.StringUtils
 {
+    private static Pattern line_Pattern = Pattern.compile("_(\\w)");
+    private static Pattern hump_Pattern = Pattern.compile("[A-Z]");
+
     /** 空字符串 */
     private static final String NULLSTR = "";
 
@@ -270,7 +275,7 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils
     }
 
     /**
-     * 下划线转驼峰命名
+     * 下划线转驼峰命名(然而转换失败tab_name)
      */
     public static String toUnderScoreCase(String s)
     {
@@ -307,6 +312,46 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils
             sb.append(Character.toLowerCase(c));
         }
 
+        return sb.toString();
+    }
+
+    /**
+     * 下划线转驼峰
+     *
+     * @param str
+     * @return
+     */
+    public static String lineToHump(String str) {
+        if (null == str || "".equals(str)) {
+            return str;
+        }
+        str = str.toLowerCase();
+        Matcher matcher = line_Pattern.matcher(str);
+        StringBuffer sb = new StringBuffer();
+        while (matcher.find()) {
+            matcher.appendReplacement(sb, matcher.group(1).toUpperCase());
+        }
+        matcher.appendTail(sb);
+
+        str = sb.toString();
+        str = str.substring(0, 1).toUpperCase() + str.substring(1);
+
+        return str;
+    }
+
+    /**
+     * 驼峰转下划线,效率比上面高
+     *
+     * @param str
+     * @return
+     */
+    public static String humpToLine(String str) {
+        Matcher matcher = hump_Pattern.matcher(str);
+        StringBuffer sb = new StringBuffer();
+        while (matcher.find()) {
+            matcher.appendReplacement(sb, "_" + matcher.group(0).toLowerCase());
+        }
+        matcher.appendTail(sb);
         return sb.toString();
     }
 
@@ -366,5 +411,13 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils
             result.append(camel.substring(1).toLowerCase());
         }
         return result.toString();
+    }
+
+    public static void main(String[] args) {
+        String s = toUnderScoreCase("tab_name");
+        System.out.println(s);
+
+        String s1 = toUnderScoreCase("tabName");
+        System.out.println(s1);
     }
 }
