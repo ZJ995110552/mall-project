@@ -3,7 +3,7 @@ package com.mercury.mallproject.controller;
 
 import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.Producer;
-import com.mercury.mallproject.common.enumresource.ResultEnum;
+import com.mercury.mallproject.common.enums.ResultEnum;
 import com.mercury.mallproject.common.response.R;
 import com.mercury.mallproject.common.utils.CodeUtil;
 import com.mercury.mallproject.domain.SysUser;

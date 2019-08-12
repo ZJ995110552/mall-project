@@ -2,7 +2,7 @@ package com.mercury.mallproject.framework.web.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.mercury.mallproject.common.enumresource.ResultEnum;
+import com.mercury.mallproject.common.enums.ResultEnum;
 import com.mercury.mallproject.common.response.R;
 import com.mercury.mallproject.common.utils.DateUtils;
 import com.mercury.mallproject.common.utils.StringUtils;

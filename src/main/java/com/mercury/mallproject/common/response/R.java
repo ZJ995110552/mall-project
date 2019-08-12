@@ -1,6 +1,6 @@
 package com.mercury.mallproject.common.response;
 
-import com.mercury.mallproject.common.enumresource.ResultEnum;
+import com.mercury.mallproject.common.enums.ResultEnum;
 
 import java.util.HashMap;
 import java.util.Map;

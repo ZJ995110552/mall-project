@@ -1,4 +1,4 @@
-package com.mercury.mallproject.common.enumresource;
+package com.mercury.mallproject.common.enums;
 
 public enum ErrorCodeEnum implements EnumCode<String>{
     UNAUTHORIZED("401","暂未登录或token已经过期"),

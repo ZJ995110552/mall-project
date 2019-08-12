@@ -1,7 +1,7 @@
 package com.mercury.mallproject.common.utils;
 
-import com.mercury.mallproject.common.enumresource.EnumCode;
-import com.mercury.mallproject.common.enumresource.IsInitEnum;
+import com.mercury.mallproject.common.enums.EnumCode;
+import com.mercury.mallproject.common.enums.IsInitEnum;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;

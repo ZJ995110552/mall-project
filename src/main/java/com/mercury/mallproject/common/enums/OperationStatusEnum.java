@@ -1,4 +1,4 @@
-package com.mercury.mallproject.common.enumresource;
+package com.mercury.mallproject.common.enums;
 
 public enum OperationStatusEnum implements EnumCode<Integer> {
 
