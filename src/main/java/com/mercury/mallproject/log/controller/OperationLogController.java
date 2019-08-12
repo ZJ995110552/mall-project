@@ -1,4 +1,4 @@
-package com.mercury.mallproject.monitor.operationlog.controller;
+package com.mercury.mallproject.log.controller;
 
 
 import com.mercury.mallproject.log.domain.SysLogOperation;

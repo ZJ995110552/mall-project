@@ -19,7 +19,7 @@ public class TestController {
     @Autowired
     private TestService testService;
 
-    @OperationLogger(modelName = "temp", user = "admin", option = "test")
+    @OperationLogger(modelName = "test", user = "admin1", option = "test")
     @RequestMapping(value = "/testMethod", method = RequestMethod.GET)
     public String testMethod() {
         Test test = new Test();
