@@ -1,7 +1,7 @@
 package com.mercury.mallproject.common.xss;
 
-import com.mercury.mallproject.common.utils.StringUtil;
-import org.apache.commons.lang.StringUtils;
+
+import com.mercury.mallproject.common.utils.StringUtils;
 
 /**
  * SQL过滤
@@ -23,7 +23,7 @@ public class SQLFilter {
         str = StringUtils.replace(str, "\\", "");
 
         //转换成小写
-        str=flag? StringUtil.humpToLine(str) :str.toLowerCase();
+        str=flag? StringUtils.humpToLine(str) :str.toLowerCase();
 
         //非法字符
         String[] keywords = {"master", "truncate", "insert", "select", "delete", "update", "declare", "alert", "drop"};

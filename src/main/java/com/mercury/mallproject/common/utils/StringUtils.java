@@ -413,11 +413,116 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils
         return result.toString();
     }
 
+    /**
+     * 首字母转小写
+     *
+     * @param s
+     * @return
+     */
+    public static String toLowerCaseFirstOne(String s) {
+        if (org.apache.commons.lang.StringUtils.isBlank(s)) {
+            return s;
+        }
+        if (Character.isLowerCase(s.charAt(0))) {
+            return s;
+        } else {
+            return (new StringBuilder()).append(Character.toLowerCase(s.charAt(0))).append(s.substring(1)).toString();
+        }
+    }
+
+    /**
+     * 首字母转大写
+     *
+     * @param s
+     * @return
+     */
+    public static String toUpperCaseFirstOne(String s) {
+        if (org.apache.commons.lang.StringUtils.isBlank(s)) {
+            return s;
+        }
+        if (Character.isUpperCase(s.charAt(0))) {
+            return s;
+        } else {
+            return (new StringBuffer()).append(Character.toUpperCase(s.charAt(0))).append(s.substring(1)).toString();
+        }
+    }
+
+    /**
+     * object转String
+     *
+     * @param object
+     * @return
+     */
+    public static String getString(Object object) {
+        return getString(object, "");
+    }
+
+    public static String getString(Object object, String defaultValue) {
+        if (null == object) {
+            return defaultValue;
+        }
+        try {
+            return object.toString();
+        } catch (Exception e) {
+            return defaultValue;
+        }
+    }
+
+    /**
+     * object转Integer
+     *
+     * @param object
+     * @return
+     */
+    public static int getInt(Object object) {
+        return getInt(object, -1);
+    }
+
+    public static int getInt(Object object, Integer defaultValue) {
+        if (null == object) {
+            return defaultValue;
+        }
+        try {
+            return Integer.parseInt(object.toString());
+        } catch (Exception e) {
+            return defaultValue;
+        }
+    }
+
+    /**
+     * object转Boolean
+     *
+     * @param object
+     * @return
+     */
+    public static boolean getBoolean(Object object) {
+        return getBoolean(object, false);
+    }
+
+    public static boolean getBoolean(Object object, Boolean defaultValue) {
+        if (null == object) {
+            return defaultValue;
+        }
+        try {
+            return Boolean.parseBoolean(object.toString());
+        } catch (Exception e) {
+            return defaultValue;
+        }
+    }
+
     public static void main(String[] args) {
         String s = toUnderScoreCase("tab_name");
         System.out.println(s);
 
         String s1 = toUnderScoreCase("tabName");
         System.out.println(s1);
+
+        String tab_name = lineToHump("tab_name");
+        System.out.println(tab_name);
+
+        String tabName = humpToLine("tabName");
+        System.out.println(tabName);
+
+
     }
 }
