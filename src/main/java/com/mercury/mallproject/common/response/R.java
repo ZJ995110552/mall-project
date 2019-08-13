@@ -87,6 +87,19 @@ public class R extends HashMap<String, Object> {
     }
 
     /**
+     * 返回成功消息
+     *
+     * @param key   键值
+     * @param value 内容
+     * @return 成功消息
+     */
+    @Override
+    public R put(String key, Object value) {
+        super.put(key, value);
+        return this;
+    }
+
+    /**
      * 返回错误码
      *
      * @param errorcode 错误码
@@ -99,19 +112,6 @@ public class R extends HashMap<String, Object> {
         json.put("errorcode", errorcode);
         json.put("msg", msg);
         return json;
-    }
-
-    /**
-     * 返回成功消息
-     *
-     * @param key   键值
-     * @param value 内容
-     * @return 成功消息
-     */
-    @Override
-    public R put(String key, Object value) {
-        super.put(key, value);
-        return this;
     }
 
     /**
