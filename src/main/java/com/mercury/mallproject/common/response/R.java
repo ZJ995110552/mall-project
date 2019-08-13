@@ -7,8 +7,6 @@ import java.util.Map;
 
 /**
  * 操作消息提醒
- *
- * @author ruoyi
  */
 public class R extends HashMap<String, Object> {
     private static final long serialVersionUID = 1L;
@@ -89,6 +87,21 @@ public class R extends HashMap<String, Object> {
     }
 
     /**
+     * 返回错误码
+     *
+     * @param errorcode 错误码
+     * @param msg  内容
+     * @return 错误消息
+     */
+    public static R errorCode(Integer errorcode, String msg) {
+        R json = new R();
+        json.put("code", ResultEnum.FAILED.getCode());
+        json.put("errorcode", errorcode);
+        json.put("msg", msg);
+        return json;
+    }
+
+    /**
      * 返回成功消息
      *
      * @param key   键值
@@ -105,7 +118,7 @@ public class R extends HashMap<String, Object> {
      * 参数验证失败返回结果
      */
     public static R validateFailed() {
-        return error(ResultEnum.VALIDATE_FAILED.getCode(), ResultEnum.VALIDATE_FAILED.getDescription());
+        return errorCode(ResultEnum.VALIDATE_FAILED.getCode(), ResultEnum.VALIDATE_FAILED.getDescription());
     }
 
     /**
@@ -114,14 +127,14 @@ public class R extends HashMap<String, Object> {
      * @param message 提示信息
      */
     public static R validateFailed(String message) {
-        return error(ResultEnum.VALIDATE_FAILED.getCode(), message);
+        return errorCode(ResultEnum.VALIDATE_FAILED.getCode(), message);
     }
 
     /**
      * 未登录返回结果
      */
     public static R unauthorized() {
-        return error(ResultEnum.UNAUTHORIZED.getCode(), ResultEnum.UNAUTHORIZED.getDescription());
+        return errorCode(ResultEnum.UNAUTHORIZED.getCode(), ResultEnum.UNAUTHORIZED.getDescription());
     }
 
     /**
@@ -130,14 +143,14 @@ public class R extends HashMap<String, Object> {
      * @param message 提示信息
      */
     public static R unauthorized(String message) {
-        return error(ResultEnum.UNAUTHORIZED.getCode(), message);
+        return errorCode(ResultEnum.UNAUTHORIZED.getCode(), message);
     }
 
     /**
      * 未授权返回结果
      */
     public static R forbidden() {
-        return error(ResultEnum.FORBIDDEN.getCode(), ResultEnum.FORBIDDEN.getDescription());
+        return errorCode(ResultEnum.FORBIDDEN.getCode(), ResultEnum.FORBIDDEN.getDescription());
     }
 
     /**
@@ -146,7 +159,7 @@ public class R extends HashMap<String, Object> {
      * @param message 提示信息
      */
     public static R forbidden(String message) {
-        return error(ResultEnum.FORBIDDEN.getCode(), message);
+        return errorCode(ResultEnum.FORBIDDEN.getCode(), message);
     }
 
 
@@ -175,9 +188,16 @@ public class R extends HashMap<String, Object> {
         ok1.forEach((key, value) -> {
             System.out.println(key + ":" + value);
         });
+
         System.out.println("====================================");
         R put = R.ok().put("AAA", "111").put("BBB", "222");
         put.forEach((key, value) -> {
+            System.out.println(key + ":" + value);
+        });
+
+        System.out.println("====================================");
+        R r = R.errorCode(ResultEnum.CAPTCHA_ERROR.getCode(), ResultEnum.CAPTCHA_ERROR.getDescription());
+        r.forEach((key, value) -> {
             System.out.println(key + ":" + value);
         });
 
