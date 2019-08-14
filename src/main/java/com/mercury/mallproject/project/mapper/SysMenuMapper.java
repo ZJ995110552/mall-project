@@ -2,8 +2,9 @@ package com.mercury.mallproject.project.mapper;
 
 import com.mercury.mallproject.project.domain.SysMenu;
 import com.mercury.mallproject.project.domain.SysMenuExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface SysMenuMapper {
     int countByExample(SysMenuExample example);
@@ -27,4 +28,7 @@ public interface SysMenuMapper {
     int updateByPrimaryKeySelective(SysMenu record);
 
     int updateByPrimaryKey(SysMenu record);
+
+
+
 }

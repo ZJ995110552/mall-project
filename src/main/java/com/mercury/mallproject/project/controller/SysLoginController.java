@@ -3,19 +3,18 @@ package com.mercury.mallproject.project.controller;
 
 import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.Producer;
-import com.mercury.mallproject.common.enums.ResultEnum;
+import com.mercury.mallproject.common.enums.ErrorCodeEnum;
 import com.mercury.mallproject.common.response.R;
-import com.mercury.mallproject.common.utils.CodeUtil;
-import com.mercury.mallproject.project.domain.SysUser;
+import com.mercury.mallproject.common.utils.IpUtils;
 import com.mercury.mallproject.project.service.SysUserService;
+import com.mercury.mallproject.shiro.utils.ShiroUtils;
 import io.swagger.annotations.Api;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.shiro.authc.*;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletOutputStream;
@@ -23,11 +22,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.awt.image.BufferedImage;
-import java.util.HashMap;
-import java.util.Map;
 
 @Api(value = "登陆接口", tags = "登陆接口")
-@Controller
+@RestController
+@RequestMapping
+@Slf4j
 public class SysLoginController {
 
     @Autowired
@@ -63,25 +62,45 @@ public class SysLoginController {
     public R login(@RequestParam("username") String username, @RequestParam("password") String password, HttpServletRequest request) {
 
 
-        Map<String, Object> map = new HashMap<>();
+//        if (!CodeUtil.checkVerifyCode(request)) {
+//            return R.error(ResultEnum.CAPTCHA_ERROR.getDescription());
+//        }
 
+        password = DigestUtils.sha256Hex(password);
+        try {
+            Subject subjct = ShiroUtils.getSubjct();
+            UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(username, password);
+            subjct.login(usernamePasswordToken);
 
-        if (!CodeUtil.checkVerifyCode(request)) {
-            return R.error(ResultEnum.CAPTCHA_ERROR.getDescription());
+            log.info("用户[{}]请求登陆，登陆IP为[{}]",username, IpUtils.getIpAddr(request));
+            if(subjct.isAuthenticated()){
+                log.info("用户[{}]身份认证成功，登陆IP为[{}]",username, IpUtils.getIpAddr(request));
+            }
+
+        } catch (UnknownAccountException e){
+            return R.error(e.getMessage());
+        } catch (IncorrectCredentialsException e){
+            return R.error(e.getMessage());
+        } catch (LockedAccountException e){
+            return R.error(e.getMessage());
+        } catch (AuthenticationException e){
+            return R.error(ErrorCodeEnum.ACCOUNT_PASSWORD_ERROR.getDescription());
         }
 
+//        Map<String, Object> map = new HashMap<>();
+//
+//        SysUser sysUser = sysUserService.queryByUserName(username);
+//        if (sysUser == null) {
+//            return R.error(ResultEnum.USER_NOT_FOUNT.getDescription());
+//        } else if (!sysUser.getPassword().equals(DigestUtils.sha256Hex(password))) {
+//            return R.error(ResultEnum.PASSWORD_ERROR.getDescription());
+//        } else {
+//            map.put("token", "");
+//            map.put("expire", "");
+//        }
 
-        SysUser sysUser = sysUserService.queryByUserName(username);
-        if (sysUser == null) {
-            return R.error(ResultEnum.USER_NOT_FOUNT.getDescription());
-        } else if (!sysUser.getPassword().equals(DigestUtils.sha256Hex(password))) {
-            return R.error(ResultEnum.PASSWORD_ERROR.getDescription());
-        } else {
-            map.put("token", "");
-            map.put("expire", "");
-        }
 
-        return R.ok();
+        return R.ok("登陆成功");
 
     }
 

@@ -26,9 +26,52 @@
 //         return false;
 //     })
 // });
+//
+// var layer;
+// $(function  () {
+//     layui.use(['form','layer'], function(){
+//         var form = layui.form;
+//         // form.verify({
+//         //     username:function(v){
+//         //         if(v.trim()==''){
+//         //             return "用户名不能为空";
+//         //         }
+//         //     }
+//         //     ,password:function(v){
+//         //         if(v.trim()==''){
+//         //             return "密码不能为空";
+//         //         }
+//         //     },code:function(v){
+//         //         if(v.trim()==''){
+//         //             return '验证码不能为空';
+//         //         }
+//         //     }
+//         // });
+//
+//         form.render();
+//     });
+//     layer = layui.layer;
+//     // var msg='${message}';
+//     // if(msg.trim()!=""){
+//     //     layer.msg(msg, {icon: 5,anim:6,offset: 't'});
+//     // }
+//     // $("#code").click(function(){
+//     //     var url = "${re.contextPath}/getCode?"+new Date().getTime();
+//     //     this.src = url;
+//     // }).click().show();
+//     // $('#code').on('mouseover',function(){
+//     //     layer.tips('点击刷新验证码', this,{time:1000});
+//     // });
+// })
+//
+// if (window != top)
+//     top.location.href = location.href;
+
+
 
 $('.id-login').on('click', function () {
     var datas = "username=" + $("#username").val() + "&password=" + $("#password").val() + "&captcha=" + $("#captcha").val();
+    console.log("");
     $.ajax({
         type: "POST",
         url: "/sys/login",

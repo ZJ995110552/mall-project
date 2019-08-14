@@ -28,4 +28,8 @@ public interface SysUserMapper {
     int updateByPrimaryKeySelective(SysUser record);
 
     int updateByPrimaryKey(SysUser record);
+
+    // 以下为自定义内容
+
+    List<String> queryAllPermissions(Long userId);
 }
