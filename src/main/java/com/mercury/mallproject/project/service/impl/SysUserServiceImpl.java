@@ -62,4 +62,10 @@ public class SysUserServiceImpl implements SysUserService {
 
         sysUserMapper.deleteByExample(sysUserExample);
     }
+
+    @Override
+    public List<SysUser> queryAll() {
+        SysUserExample sysUserExample = new SysUserExample();
+        return sysUserMapper.selectByExample(sysUserExample);
+    }
 }

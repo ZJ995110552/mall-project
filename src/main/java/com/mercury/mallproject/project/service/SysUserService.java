@@ -34,5 +34,7 @@ public interface SysUserService {
      */
     void deleteBatch(List<String> userIds);
 
+    List<SysUser> queryAll();
+
 
 }
