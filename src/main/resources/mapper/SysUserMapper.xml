@@ -402,4 +402,12 @@
       update_date = #{updateDate,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+    <!-- 以下为自定义内容 -->
+    <select id="queryAllPermissions" parameterType="java.lang.String" resultType="java.lang.String">
+        select
+
+    </select>
+
+
 </mapper>
