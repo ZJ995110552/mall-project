@@ -66,10 +66,9 @@ public class SysLoginController {
 //            return R.error(ResultEnum.CAPTCHA_ERROR.getDescription());
 //        }
 
-        password = DigestUtils.sha256Hex(password);
         try {
             Subject subjct = ShiroUtils.getSubjct();
-            UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(username, password);
+            UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(username, DigestUtils.sha256Hex(password));
             subjct.login(usernamePasswordToken);
 
             log.info("用户[{}]请求登陆，登陆IP为[{}]",username, IpUtils.getIpAddr(request));
