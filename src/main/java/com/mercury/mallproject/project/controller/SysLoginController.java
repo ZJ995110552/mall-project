@@ -89,15 +89,4 @@ public class SysLoginController {
         return R.ok("登陆成功");
 
     }
-
-//    public CommonResult login(@RequestBody UmsAdminLoginParam umsAdminLoginParam, BindingResult result) {
-//        String token = adminService.login(umsAdminLoginParam.getUsername(), umsAdminLoginParam.getPassword());
-//        if (token == null) {
-//            return CommonResult.validateFailed("用户名或密码错误");
-//        }
-//        Map<String, String> tokenMap = new HashMap<>();
-//        tokenMap.put("token", token);
-//        tokenMap.put("tokenHead", tokenHead);
-//        return CommonResu∂lt.success(tokenMap);
-//    }
 }
