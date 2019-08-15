@@ -62,24 +62,12 @@ $(document).ready(function () {
                     }
                 }
             });
-
-
-
-
-            // layer.alert("测试");
-            // layer.alert(JSON.stringify(data.field), {
-            //     title: '最终的提交信息'
-            // });
-            // return false;
         });
 
     });
 });
 function refreshCode() {
-    var captcha = document.getElementById("captcha");
-    // var captcha1 = document.getElementById("captcha1");
-    captcha.src = "images/captcha.png?d=" + new Date().getTime();
-    // captcha1.src = "images/captcha.png?d=" + new Date().getTime();
+    document.getElementById("captchapng").src = "images/captcha.png?d=" + Math.random();
 }
 
 
