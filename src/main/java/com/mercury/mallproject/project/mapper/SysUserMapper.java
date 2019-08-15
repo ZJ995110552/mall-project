@@ -31,5 +31,5 @@ public interface SysUserMapper {
 
     // 以下为自定义内容
 
-    List<String> queryAllPermissions(Long userId);
+    List<String> queryAllPermissions(String userId);
 }

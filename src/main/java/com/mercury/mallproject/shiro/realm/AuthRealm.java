@@ -37,27 +37,20 @@ public class AuthRealm extends AuthorizingRealm {
 		SysUser sysUser = (SysUser)principals.getPrimaryPrincipal();
 		String userId = sysUser.getUserId();
 
-
-
 		List<String> permsList = null;
 		
 		//系统管理员，拥有最高权限
-		if("admin".equals(userId)){
+		if("1908002".equals(userId)){
 			SysMenuExample sysMenuExample = new SysMenuExample();
 			List<SysMenu> sysMenus = sysMenuMapper.selectByExample(sysMenuExample);
 
-
 			permsList = new ArrayList<>(sysMenus.size());
-			for (SysMenu menu: sysMenus
-				 ) {
+			for (SysMenu menu: sysMenus) {
 				permsList.add(menu.getPermissions());
 			}
 
 		}else{
-			SysMenuExample sysMenuExample = new SysMenuExample();
-			SysMenuExample.Criteria criteria = sysMenuExample.createCriteria();
-
-//			permsList = sysUserDao.queryAllPerms(userId);
+			permsList = sysUserMapper.queryAllPermissions(sysUser.getUserId());
 		}
 
 		//用户权限列表

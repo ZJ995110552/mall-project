@@ -3,12 +3,12 @@ package com.mercury.mallproject.project.controller;
 import com.mercury.mallproject.log.aspect.annotaion.OperationLogger;
 import com.mercury.mallproject.project.domain.Test;
 import com.mercury.mallproject.project.service.TestService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import springfox.documentation.annotations.ApiIgnore;
 
 @ApiIgnore
@@ -32,7 +32,7 @@ public class TestController {
         return intValue + "";
     }
 
-    @ResponseBody
+    @RequiresPermissions("test:demo:menu002")
     @RequestMapping(value = "test", method = RequestMethod.GET)
     public String test() {
         return "test";

@@ -5,6 +5,7 @@ import com.mercury.mallproject.common.id.IdGenerator;
 import com.mercury.mallproject.log.domain.SysLogOperation;
 import com.mercury.mallproject.project.domain.SysUser;
 import com.mercury.mallproject.log.mapper.SysLogOperationMapper;
+import com.mercury.mallproject.project.mapper.SysUserMapper;
 import com.mercury.mallproject.project.service.SysUserService;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.Test;
@@ -14,6 +15,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -28,6 +31,9 @@ public class ApiTest {
 
     @Autowired
     private SysLogOperationMapper sysLogOperationMapper;
+
+    @Autowired
+    private SysUserMapper sysUserMapper;
 
 
     @Test
@@ -71,5 +77,13 @@ public class ApiTest {
         sysLogOperation.setStatus(1);
         sysLogOperationMapper.insert(sysLogOperation);
     }
+
+    @Test
+    public void testQuery(){
+        List<String> strings = sysUserMapper.queryAllPermissions("1908012");
+
+
+    }
+
 
 }

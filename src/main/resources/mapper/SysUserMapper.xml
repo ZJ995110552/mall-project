@@ -405,8 +405,11 @@
 
     <!-- 以下为自定义内容 -->
     <select id="queryAllPermissions" parameterType="java.lang.String" resultType="java.lang.String">
-        select
-
+        select sys_menu.permissions from sys_role_menu
+        left join sys_menu on sys_role_menu.menu_id = sys_menu.id
+        left join sys_role_user on sys_role_menu.role_id = sys_role_user.role_id
+        left join sys_user on sys_role_user.user_id = sys_user.id
+        where sys_user.user_id= #{userId}
     </select>
 
 
