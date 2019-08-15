@@ -29,32 +29,32 @@ public class ShiroConfig {
         ShiroFilterFactoryBean bean = new ShiroFilterFactoryBean();
         bean.setSecurityManager(manager);
         //配置登录的url和登录成功的url
-
         bean.setLoginUrl("/login.html");
         bean.setSuccessUrl("/index.html");
         //配置访问权限
         LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
         //anon表示可以匿名访问  authc表示需要认证才可以访问
-        filterChainDefinitionMap.put("/sys/login", "anon");
-        filterChainDefinitionMap.put("/institution/addInstitution", "anon");
-        filterChainDefinitionMap.put("/mobile/**", "anon");
-        filterChainDefinitionMap.put("/shop/**", "anon");
         filterChainDefinitionMap.put("/**/*.mp4", "anon");
         filterChainDefinitionMap.put("/**/*.css", "anon");
         filterChainDefinitionMap.put("/**/*.js", "anon");
         filterChainDefinitionMap.put("/**/*.jpeg", "anon");
         filterChainDefinitionMap.put("/**/*.png", "anon");
-//        filterChainDefinitionMap.put("/**/login.html", "anon");
         filterChainDefinitionMap.put("/**/fonts/**", "anon");
         filterChainDefinitionMap.put("/**/plugins/**", "anon");
-        filterChainDefinitionMap.put("/swagger/**", "anon");
-        filterChainDefinitionMap.put("/favicon.ico", "anon");
-        filterChainDefinitionMap.put("/captcha.jpg", "anon");
-        filterChainDefinitionMap.put("/", "anon");
-        filterChainDefinitionMap.put("/index-admin.html", "anon");
-        filterChainDefinitionMap.put("/register.html", "anon");
-        filterChainDefinitionMap.put("/**", "authc");
         filterChainDefinitionMap.put("/assets/**", "anon");
+        filterChainDefinitionMap.put("/favicon.ico", "anon");
+        filterChainDefinitionMap.put("/images/captcha.jpg", "anon");
+        filterChainDefinitionMap.put("/captcha.jpg", "anon");
+        filterChainDefinitionMap.put("/sys/login", "anon");
+        filterChainDefinitionMap.put("/portal-index.html", "anon");
+        filterChainDefinitionMap.put("/swagger-ui.html", "anon");
+        filterChainDefinitionMap.put("/**/login.html", "anon");
+        filterChainDefinitionMap.put("/login.html", "anon");
+        filterChainDefinitionMap.put("/register.html", "anon");
+        filterChainDefinitionMap.put("/mobile/**", "anon");
+        filterChainDefinitionMap.put("/shop/**", "anon");
+        filterChainDefinitionMap.put("/**", "authc");
+
         bean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return bean;
     }
