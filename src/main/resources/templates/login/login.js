@@ -17,7 +17,7 @@ $(document).ready(function () {
 
         //自定义验证规则
         form.verify({
-            username : function (value) {
+            username: function (value) {
                 if (value.length < 7) {
                     return '用户名不能为空且至少6位';
                 }
@@ -66,6 +66,7 @@ $(document).ready(function () {
 
     });
 });
+
 function refreshCode() {
     document.getElementById("captchapng").src = "images/captcha.png?d=" + Math.random();
 }
@@ -99,96 +100,3 @@ function refreshCode() {
 //         return false;
 //     })
 // });
-//
-// var layer;
-// $(function  () {
-//     layui.use(['form','layer'], function(){
-//         var form = layui.form;
-//         // form.verify({
-//         //     username:function(v){
-//         //         if(v.trim()==''){
-//         //             return "用户名不能为空";
-//         //         }
-//         //     }
-//         //     ,password:function(v){
-//         //         if(v.trim()==''){
-//         //             return "密码不能为空";
-//         //         }
-//         //     },code:function(v){
-//         //         if(v.trim()==''){
-//         //             return '验证码不能为空';
-//         //         }
-//         //     }
-//         // });
-//
-//         form.render();
-//     });
-//     layer = layui.layer;
-//     // var msg='${message}';
-//     // if(msg.trim()!=""){
-//     //     layer.msg(msg, {icon: 5,anim:6,offset: 't'});
-//     // }
-//     // $("#code").click(function(){
-//     //     var url = "${re.contextPath}/getCode?"+new Date().getTime();
-//     //     this.src = url;
-//     // }).click().show();
-//     // $('#code').on('mouseover',function(){
-//     //     layer.tips('点击刷新验证码', this,{time:1000});
-//     // });
-// })
-//
-// if (window != top)
-//     top.location.href = location.href;
-
-
-// $('.id-login').on('click', function () {
-//     var datas = "username=" + $("#username").val() + "&password=" + $("#password").val() + "&captcha=" + $("#captcha").val();
-//     console.log("");
-//     $.ajax({
-//         type: "POST",
-//         url: "/sys/login",
-//         data: datas,
-//         dataType: "json",
-//         success: function (result) {
-//
-//             if (result.code == 200) {//登录成功
-//
-//                 parent.location.href = '/index.html';
-//             } else {
-//                 alert(result.message);
-//                 parent.location.href = '/login.html';
-//                 // $.confirm({
-//                 //     title: '对话框',
-//                 //     content: '一些内容...',
-//                 //     buttons: {
-//                 //         confirm: {
-//                 //             text: '确认',
-//                 //             action: function(){
-//                 //                 $.alert('确认的!');
-//                 //             }
-//                 //         },
-//                 //         cancel: {
-//                 //             text: '关闭',
-//                 //             action: function(){
-//                 //                 $.alert('取消的!');
-//                 //             }
-//                 //         },
-//                 //         somethingElse: {
-//                 //             text: '其他',
-//                 //             btnClass: 'btn-blue',
-//                 //             keys: ['enter', 'shift'],
-//                 //             action: function(){
-//                 //                 $.alert('其他的选择？');
-//                 //             }
-//                 //         }
-//                 //     }
-//                 // });
-//                 // refreshCode();
-//             }
-//         }
-//     });
-//
-// });
-
-
-
