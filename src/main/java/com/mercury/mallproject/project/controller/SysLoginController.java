@@ -86,19 +86,6 @@ public class SysLoginController {
             return R.error(ErrorCodeEnum.ACCOUNT_PASSWORD_ERROR.getDescription());
         }
 
-//        Map<String, Object> map = new HashMap<>();
-//
-//        SysUser sysUser = sysUserService.queryByUserName(username);
-//        if (sysUser == null) {
-//            return R.error(ResultEnum.USER_NOT_FOUNT.getDescription());
-//        } else if (!sysUser.getPassword().equals(DigestUtils.sha256Hex(password))) {
-//            return R.error(ResultEnum.PASSWORD_ERROR.getDescription());
-//        } else {
-//            map.put("token", "");
-//            map.put("expire", "");
-//        }
-
-
         return R.ok("登陆成功");
 
     }
