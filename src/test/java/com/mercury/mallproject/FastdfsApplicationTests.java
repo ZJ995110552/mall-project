@@ -31,9 +31,6 @@ public class FastdfsApplicationTests {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(FastdfsApplicationTests.class);
 
-    @Autowired
-    private ActivitiConfig activitiConfig;
-
     File file = null;
 
     Set<MateData> metaDataSet = null;
@@ -174,11 +171,6 @@ public class FastdfsApplicationTests {
         System.out.println("【不带组名的文件地址】:" + storePath.getPath());
     }
 
-    @Test
-    public void print() {
-        System.out.println(0);
-        activitiConfig.initTable();
-    }
 
     @Test
     public void print1() {

@@ -1,5 +1,6 @@
 package com.mercury.mallproject;
 
+import com.mercury.mallproject.activiti.config.ActivitiConfig;
 import com.mercury.mallproject.common.utils.DateTimeUtil;
 import com.mercury.mallproject.project.domain.*;
 import com.mercury.mallproject.project.service.*;
@@ -35,6 +36,9 @@ public class GeneratorUserAboutTest {
 
     @Autowired
     private SysRoleMenuService sysRoleMenuService;
+
+    @Autowired
+    private ActivitiConfig activitiConfig;
 
 
     @Test
@@ -173,6 +177,15 @@ public class GeneratorUserAboutTest {
         }
     }
 
+
+    @Test
+    public void print() {
+        log.info("==============================================================================");
+        log.info("开始生成流程相关表");
+//        activitiConfig.initTable();
+        log.info("流程相关表生成结束");
+        log.info("==============================================================================");
+    }
 
 
 }
