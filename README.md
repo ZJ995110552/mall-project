@@ -1,2 +1,2 @@
 # mall-project
-Demo
+mall-project
